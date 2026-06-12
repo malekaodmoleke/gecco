@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Why GECCO?</title>
+
+<style>
+:root {
+  --green: #218b16;
+  --dark-green: #11640d;
+  --light-green: #f2faf0;
+  --text: #5f6673;
+  --dark: #172033;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  background: #fff;
+  line-height: 1.7;
+}
+
+.container {
+  width: min(1180px, 90%);
+  margin: auto;
+}
+
+/* HERO */
+.hero {
+  min-height: 78vh;
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(120deg, rgba(8, 90, 30, .72), rgba(30, 160, 120, .35)),
+    radial-gradient(circle at center, rgba(255,255,255,.15), transparent 45%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  color: #fff;
+  padding: 35px;
+  border-radius: 28px;
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(3px);
+}
+
+.hero-content h1 {
+  font-size: clamp(44px, 7vw, 86px);
+  font-weight: 300;
+  line-height: 1.15;
+  margin-bottom: 22px;
+  text-shadow: 0 12px 35px rgba(0,0,0,.25);
+}
+
+.hero-content p {
+  font-size: 18px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 32px;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 14px 34px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: .3s;
+}
+
+.hero-btn:hover {
+  background: #fff;
+  color: var(--green);
+}
+
+/* INTRO */
+.intro-wrap {
+  margin-top: -70px;
+  position: relative;
+  z-index: 4;
+}
+
+.intro-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.info-card {
+  background: #fff;
+  padding: 60px 55px;
+  text-align: center;
+  border-radius: 24px;
+  box-shadow: 0 25px 70px rgba(16, 24, 40, .12);
+}
+
+.info-card.green {
+  background: linear-gradient(135deg, var(--green), var(--dark-green));
+  color: #fff;
+}
+
+.info-card h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  color: var(--green);
+}
+
+.info-card.green h2 {
+  color: #fff;
+}
+
+.info-card p {
+  font-size: 19px;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 34px;
+  border: 2px solid currentColor;
+  color: var(--green);
+  text-decoration: none;
+  letter-spacing: 4px;
+  font-size: 13px;
+  font-weight: bold;
+  transition: .3s;
+}
+
+.info-card.green .btn {
+  color: #fff;
+}
+
+.btn:hover {
+  background: currentColor;
+}
+
+.btn:hover span {
+  color: #fff;
+}
+
+.info-card.green .btn:hover span {
+  color: var(--green);
+}
+
+/* VIDEO AREA */
+.video-section {
+  padding: 110px 0 80px;
+}
+
+.video-grid {
+  display: grid;
+  grid-template-columns: 1.05fr .95fr;
+  gap: 70px;
+  align-items: center;
+}
+
+.video-card {
+  position: relative;
+  display: block;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 25px 65px rgba(0,0,0,.18);
+}
+
+.video-card img {
+  width: 100%;
+  display: block;
+}
+
+.video-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.25));
+}
+
+.play {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+}
+
+.play span {
+  width: 90px;
+  height: 64px;
+  background: #ff0000;
+  border-radius: 16px;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0,0,0,.3);
+}
+
+.play span::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  transform: translate(-50%, -50%);
+  border-left: 23px solid #fff;
+  border-top: 15px solid transparent;
+  border-bottom: 15px solid transparent;
+}
+
+.eyebrow {
+  color: var(--green);
+  letter-spacing: 8px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 18px;
+}
+
+.content h2 {
+  color: var(--dark);
+  font-size: clamp(34px, 4vw, 52px);
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 26px;
+}
+
+.content p {
+  font-size: 20px;
+}
+
+/* ACHIEVEMENTS */
+.achievements {
+  background: var(--light-green);
+  padding: 80px 0;
+}
+
+.achievements-box {
+  background: var(--green);
+  color: #fff;
+  border-radius: 26px;
+  padding: 55px 40px;
+  text-align: center;
+  box-shadow: 0 25px 60px rgba(33,139,22,.25);
+}
+
+.achievements-box h2 {
+  font-size: clamp(30px, 4vw, 44px);
+  font-weight: 300;
+  margin-bottom: 34px;
+}
+
+.achievement-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px 28px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.achievement-item {
+  background: rgba(255,255,255,.12);
+  padding: 18px 20px;
+  border-radius: 14px;
+  font-size: 18px;
+}
+
+/* CONFERENCE */
+.conference {
+  padding: 90px 0;
+}
+
+.conference-card {
+  background: linear-gradient(135deg, var(--dark-green), var(--green));
+  color: #fff;
+  text-align: center;
+  border-radius: 28px;
+  padding: 70px 45px;
+}
+
+.conference-card span {
+  display: block;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  font-size: 12px;
+  margin-bottom: 18px;
+  opacity: .85;
+}
+
+.conference-card h2 {
+  font-size: clamp(30px, 4vw, 46px);
+  font-weight: 300;
+  margin-bottom: 24px;
+}
+
+.conference-card p {
+  max-width: 1000px;
+  margin: 0 auto 20px;
+  font-size: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .intro-grid,
+  .video-grid,
+  .achievement-list {
+    grid-template-columns: 1fr;
+  }
+
+  .intro-wrap {
+    margin-top: 0;
+    padding-top: 40px;
+  }
+
+  .info-card {
+    padding: 45px 28px;
+  }
+
+  .video-section,
+  .conference {
+    padding: 65px 0;
+  }
+
+  .content p,
+  .info-card p,
+  .conference-card p {
+    font-size: 17px;
+  }
+
+  .hero {
+    min-height: 70vh;
+  }
+
+  .hero-content {
+    background: transparent;
+    backdrop-filter: none;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<section class="hero">
+  <img src="images/hero-why-gecco.jpg" alt="Why GECCO" fetchpriority="high">
+
+  <div class="hero-content">
+    <h1>Champions for Change in the<br>Early Years</h1>
+    <p>Why GECCO?</p>
+    <a href="#why-gecco" class="hero-btn">EXPLORE</a>
+  </div>
+</section>
+
+<section class="intro-wrap" id="why-gecco">
+  <div class="container">
+    <div class="intro-grid">
+
+      <div class="info-card">
+        <h2>Our unique relationship with Tops Day Nurseries</h2>
+        <p>
+          Tops are constantly identifying and acting on areas for improvement in their day-to-day operations.
+          GECCO is Cheryl’s vehicle for sharing what they learn with others in Early Years childcare and education.
+        </p>
+        <a href="#" class="btn"><span>DONATE</span></a>
+      </div>
+
+      <div class="info-card green">
+        <h2>No politics, no hidden agendas, no conflicts of interest</h2>
+        <p>
+          Cheryl, a leading advocate for sustainable business and education, gained global attention in 2017
+          for banning plastic glitter in Tops nurseries and replacing commercial baby wipes with homemade alternatives.
+        </p>
+        <a href="#" class="btn"><span>VOLUNTEER</span></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="video-section">
+  <div class="container">
+    <div class="video-grid">
+
+      <a class="video-card" href="https://www.youtube.com/watch?v=X4b5MhhhGug" target="_blank">
+        <img src="https://img.youtube.com/vi/X4b5MhhhGug/maxresdefault.jpg" alt="Cheryl Hadland sustainability video">
+        <div class="play"><span></span></div>
+      </a>
+
+      <div class="content">
+        <div class="eyebrow">Reducing Single-Use Plastics</div>
+        <h2>Small steps towards a sustainable future</h2>
+        <p>
+          Tops aim to stop or reduce the use of single-use plastics. Their work includes washable aprons,
+          “Switch it off” stickers, parent communication by email, reduced printing, and practical savings
+          reinvested into greener improvements.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="achievements">
+  <div class="container">
+    <div class="achievements-box">
+      <h2>Practical changes already making a difference</h2>
+
+      <div class="achievement-list">
+        <div class="achievement-item">Swapped light bulbs for LED bulbs</div>
+        <div class="achievement-item">Installed time and light sensors</div>
+        <div class="achievement-item">Installed timers on coolers and heaters</div>
+        <div class="achievement-item">Set printers to sleep instead of standby</div>
+        <div class="achievement-item">Fitted fuel-saving magnets on mains</div>
+        <div class="achievement-item">Installed solar panels at multiple sites</div>
+        <div class="achievement-item">Made cycling to work more accessible</div>
+        <div class="achievement-item">Identified sustainable travel options</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="conference">
+  <div class="container">
+    <div class="conference-card">
+      <span>Event Highlight</span>
+      <h2>EY Eco-Sustainability Conference 2020</h2>
+      <p>
+        The first GECCO Early Years Eco-Sustainability Conference ran alongside the Nursery World Show
+        in London, February 2020.
+      </p>
+      <p>
+        Cheryl spoke with Matt Arnerich from Famly about her sustainability journey and how settings
+        can work to become more sustainable every day.
+      </p>
+    </div>
+  </div>
+</section>
+<footer id="footer-placeholder"></footer>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+      document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+</body>
+</html>

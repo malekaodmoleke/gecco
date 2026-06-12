@@ -1,0 +1,283 @@
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+/* FOOTER */
+.site-footer{
+    background:linear-gradient(180deg,#0c4f13,#062f0a);
+    color:#fff;
+    padding-top:20px;
+}
+
+/* Social Bar */
+.social-section{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    padding:20px;
+    border-bottom:1px solid rgba(255,255,255,.15);
+}
+
+.social-section a{
+    width:50px;
+    height:50px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#fff;
+    font-size:20px;
+    text-decoration:none;
+    transition:.3s ease;
+}
+
+.social-section a:hover{
+    transform:translateY(-5px);
+}
+
+/* Brand Colors */
+.facebook{
+    background:#1877f2;
+}
+
+.instagram{
+    background:#e4405f;
+}
+
+.linkedin{
+    background:#0077b5;
+}
+
+.youtube{
+    background:#ff0000;
+}
+
+/* Content */
+.footer-container{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+
+.footer-title{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.footer-title h2{
+    font-size:32px;
+    margin-bottom:10px;
+}
+
+.footer-title p{
+    font-size:15px;
+    color:#d7e8d7;
+}
+
+/* Mission */
+.mission-box{
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:15px;
+    text-align:center;
+    line-height:1.8;
+    margin-bottom:40px;
+    border:1px solid rgba(255,255,255,.12);
+}
+
+.mission-box h3{
+    margin-bottom:15px;
+    font-size:28px;
+    color:#fff;
+}
+
+/* Donate Section */
+.donate-title{
+    text-align:center;
+    font-size:30px;
+    margin-bottom:30px;
+}
+
+.donation-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:25px;
+}
+
+.donation-card{
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:15px;
+    border:1px solid rgba(255,255,255,.15);
+    transition:.3s ease;
+}
+
+.donation-card:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.12);
+}
+
+.donation-card h4{
+    font-size:22px;
+    margin-bottom:15px;
+}
+
+.donation-card p{
+    color:#d7e8d7;
+    line-height:1.7;
+}
+
+.donation-card a{
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+    display:inline-block;
+    margin-top:12px;
+}
+
+.donation-card a:hover{
+    text-decoration:underline;
+}
+
+/* Bottom */
+.footer-bottom{
+    border-top:1px solid rgba(255,255,255,.15);
+    text-align:center;
+    padding:20px;
+    font-size:15px;
+    color:#d7e8d7;
+}
+
+@media(max-width:768px){
+
+    .footer-title h2{
+        font-size:26px;
+    }
+
+    .mission-box h3{
+        font-size:24px;
+    }
+
+    .donate-title{
+        font-size:24px;
+    }
+
+}
+
+</style>
+<footer class="site-footer">
+
+    <!-- Social Media -->
+    <div class="social-section">
+
+        <a href="https://www.facebook.com/GECCOcharity/"
+           target="_blank"
+           class="facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://www.instagram.com/geccocharity/"
+           target="_blank"
+           class="instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://www.linkedin.com/in/cheryl-hadland-7b0ba324/"
+           target="_blank"
+           class="linkedin">
+            <i class="fab fa-linkedin-in"></i>
+        </a>
+
+        <a href="https://www.youtube.com/channel/UCHtKeyQc7i8Kq1A4BMEYYtA"
+           target="_blank"
+           class="youtube">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+    </div>
+
+    <div class="footer-container">
+
+        <div class="footer-title">
+            <h2>GECCO</h2>
+            <p>Environmental Conservation • Community Projects • Education</p>
+        </div>
+
+        <div class="mission-box">
+
+            <h3>100% of Your Donation Supports Our Work</h3>
+
+            <p>
+                Our trustees manage and govern GECCO entirely on a voluntary basis,
+                ensuring every penny donated goes directly towards our environmental
+                projects and conservation initiatives.
+            </p>
+
+            <br>
+
+            <p>
+                Promotional costs, including this website, are covered separately
+                through donations, helping us raise awareness and continue our
+                mission to protect and enhance our environment.
+            </p>
+
+        </div>
+
+        <h3 class="donate-title">Ways To Donate</h3>
+
+        <div class="donation-grid">
+
+            <div class="donation-card">
+
+                <h4>
+                    <i class="fas fa-heart"></i>
+                    Give As You Live
+                </h4>
+
+                <p>
+                    Support GECCO while shopping online at no
+                    extra cost to you.
+                </p>
+
+                <a href="https://www.giveasyoulive.com/charity/gecco"
+                   target="_blank">
+                    Visit Give As You Live →
+                </a>
+
+            </div>
+
+            <div class="donation-card">
+
+                <h4>
+                    <i class="fas fa-university"></i>
+                    Direct Bank Donation
+                </h4>
+
+                <p>
+                    Donate directly through our charity banking facilities
+                    using our mobile donation application.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        © 2017–2026 GECCO | Registered Charity No. 1171726 |
+        All Rights Reserved.
+    </div>
+
+</footer>

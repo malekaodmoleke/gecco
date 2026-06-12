@@ -1,0 +1,369 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<header class="site-header">
+
+  <div class="logo-area">
+    <a href="gecco.html" class="logo-link">
+      <img src="images/logo.png" alt="GECCO Logo">
+    </a>
+  </div>
+
+  <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Open menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+
+  <nav class="main-nav" id="mainNav">
+
+    <a href="gecco.html">Home</a>
+
+    <div class="nav-item">
+      <button type="button">About <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="dropdown">
+        <a href="why-gecco.html">Why GECCO?</a>
+        <a href="meet-the-team.html">Meet The Team</a>
+        <a href="cser-policy.html">Corporate Social Environmental Responsibility Policy (CSER)</a>
+        <a href="positive-impact.html">Positive Impact on People</a>
+      </div>
+    </div>
+
+    <a href="ecec-forum.html">Forum</a>
+
+    <div class="nav-item">
+      <button type="button">Blog & Articles <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="dropdown">
+        <a href="resources.html">Resources Read & Download Articles</a>
+      </div>
+    </div>
+
+    <a href="#">World Forum Foundation</a>
+    <a href="#">OMEP</a>
+
+    <div class="nav-item">
+      <button type="button">Support Us <i class="fa-solid fa-chevron-down"></i></button>
+      <div class="dropdown dropdown-right">
+        <a href="corporate-partnerships.html">Corporate Partnerships</a>
+        <a href="commission-us.html">Commission Us</a>
+        <a href="volunteer.html">Volunteer</a>
+        <a href="donations.html">Donate</a>
+      </div>
+    </div>
+
+    <button class="search-btn" id="searchBtn" type="button" aria-label="Open search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+
+  </nav>
+
+</header>
+
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-container">
+    <img src="images/logo.png" alt="GECCO Logo">
+
+    <input
+      type="text"
+      id="searchInput"
+      placeholder="Search ..."
+    >
+
+    <button class="close-search" id="closeSearch" type="button" aria-label="Close search">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+</div>
+
+<style>
+.site-header{
+  height:76px;
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:relative;
+  z-index:9999;
+}
+
+.logo-area{
+  width:170px;
+  padding-left:28px;
+  display:flex;
+  align-items:center;
+}
+
+.logo-link img{
+  width:74px;
+  height:74px;
+  object-fit:contain;
+  display:block;
+}
+
+.main-nav{
+  display:flex;
+  align-items:stretch;
+  justify-content:flex-end;
+  height:100%;
+  flex:1;
+}
+
+.main-nav > a,
+.nav-item > button,
+.search-btn{
+  height:100%;
+  padding:0 24px;
+  border:0;
+  border-left:1px solid #ddd;
+  background:#fff;
+  color:#00408f;
+  font-weight:700;
+  font-size:13px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  font-family:Arial, Helvetica, sans-serif;
+  white-space:nowrap;
+}
+
+.main-nav > a:hover,
+.nav-item > button:hover,
+.search-btn:hover{
+  color:#238d19;
+}
+
+.nav-item{
+  position:relative;
+}
+
+.nav-item button i{
+  margin-left:8px;
+  font-size:11px;
+}
+
+.search-btn{
+  width:76px;
+  border-right:1px solid #ddd;
+  font-size:22px;
+}
+
+.dropdown{
+  display:none;
+  position:absolute;
+  top:76px;
+  left:0;
+  width:360px;
+  background:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+  z-index:99999;
+}
+
+.dropdown-right{
+  right:0;
+  left:auto;
+  width:260px;
+}
+
+.dropdown a{
+  display:block;
+  padding:22px 18px;
+  border-bottom:1px solid #bbb;
+  color:#00408f;
+  font-size:13px;
+  font-weight:700;
+  text-decoration:none;
+  line-height:1.6;
+  background:#fff;
+}
+
+.dropdown a:hover{
+  background:#f3faf1;
+  color:#238d19;
+}
+
+.nav-item:hover .dropdown{
+  display:block;
+}
+
+/* SEARCH OVERLAY */
+.search-overlay{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:76px;
+  background:#fff;
+  border-bottom:1px solid #ddd;
+  z-index:9999999;
+  transform:translateY(-100%);
+  transition:.35s ease;
+}
+
+.search-overlay.active{
+  transform:translateY(0);
+}
+
+.search-container{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  padding:0 32px;
+}
+
+.search-container img{
+  width:74px;
+  height:74px;
+  object-fit:contain;
+  margin-right:35px;
+}
+
+.search-container input{
+  flex:1;
+  height:46px;
+  border:none;
+  outline:none;
+  font-size:18px;
+  color:#00408f;
+  background:transparent;
+}
+
+.search-container input::placeholder{
+  color:#00408f;
+}
+
+.close-search{
+  width:60px;
+  height:60px;
+  background:none;
+  border:none;
+  color:#00408f;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.close-search:hover{
+  color:#238d19;
+}
+
+/* MOBILE */
+.mobile-toggle{
+  display:none;
+  background:none;
+  border:0;
+  color:#00408f;
+  font-size:28px;
+  padding:20px;
+}
+
+@media(max-width:1250px){
+  .mobile-toggle{
+    display:block;
+  }
+
+  .main-nav{
+    display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    width:100%;
+    height:auto;
+    background:#fff;
+    flex-direction:column;
+    border-top:1px solid #ddd;
+  }
+
+  .main-nav.active{
+    display:flex;
+  }
+
+  .main-nav > a,
+  .nav-item > button,
+  .search-btn{
+    width:100%;
+    height:58px;
+    justify-content:flex-start;
+    border-left:0;
+    border-bottom:1px solid #ddd;
+  }
+
+  .search-btn{
+    font-size:20px;
+  }
+
+  .dropdown,
+  .dropdown-right{
+    position:static;
+    width:100%;
+    box-shadow:none;
+  }
+
+  .nav-item:hover .dropdown{
+    display:none;
+  }
+
+  .nav-item.open .dropdown{
+    display:block;
+  }
+}
+
+@media(max-width:600px){
+  .logo-area{
+    width:auto;
+    padding-left:18px;
+  }
+
+  .logo-link img{
+    width:64px;
+    height:64px;
+  }
+
+  .search-container{
+    padding:0 18px;
+  }
+
+  .search-container img{
+    width:58px;
+    height:58px;
+    margin-right:18px;
+  }
+
+  .search-container input{
+    font-size:16px;
+  }
+}
+</style>
+
+<script>
+function toggleMenu(){
+  document.getElementById("mainNav").classList.toggle("active");
+}
+
+document.querySelectorAll(".nav-item > button").forEach(button => {
+  button.addEventListener("click", function(){
+    if(window.innerWidth <= 1250){
+      this.parentElement.classList.toggle("open");
+    }
+  });
+});
+
+const searchBtn = document.getElementById("searchBtn");
+const searchOverlay = document.getElementById("searchOverlay");
+const closeSearch = document.getElementById("closeSearch");
+const searchInput = document.getElementById("searchInput");
+
+searchBtn.addEventListener("click", () => {
+  searchOverlay.classList.add("active");
+  setTimeout(() => searchInput.focus(), 100);
+});
+
+closeSearch.addEventListener("click", () => {
+  searchOverlay.classList.remove("active");
+});
+
+document.addEventListener("keydown", (e) => {
+  if(e.key === "Escape"){
+    searchOverlay.classList.remove("active");
+  }
+});
+</script>

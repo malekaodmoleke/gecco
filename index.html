@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GECCO - Champions for Change in the Early Years</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      color: #344054;
+      background: #ffffff;
+      line-height: 1.7;
+    }
+
+    .hero {
+      min-height: 72vh;
+      background:
+        linear-gradient(120deg, rgba(16, 128, 25, 0.72), rgba(34, 139, 34, 0.28)),
+        url("images/hero-home.jpg") center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 80px 20px;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      animation: fadeUp 0.9s ease;
+    }
+
+    .hero h1 {
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      letter-spacing: 8px;
+      font-weight: 700;
+      text-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    }
+
+    .hero p {
+      font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+      margin: 18px 0 34px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.35);
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 15px 32px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 600;
+      letter-spacing: 2px;
+      transition: 0.3s ease;
+    }
+
+    .btn-primary {
+      background: #218b16;
+      color: white;
+      box-shadow: 0 12px 28px rgba(33,139,22,0.35);
+    }
+
+    .btn-primary:hover {
+      background: #176c10;
+      transform: translateY(-4px);
+    }
+
+    .btn-light {
+      background: white;
+      color: #218b16;
+    }
+
+    .btn-light:hover {
+      transform: translateY(-4px);
+    }
+
+    section {
+      padding: 90px 20px;
+    }
+
+    .container {
+      max-width: 1180px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title span {
+      color: #218b16;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .section-title h2 {
+      color: #16810f;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin: 10px 0 18px;
+      font-weight: 600;
+    }
+
+    .section-title p {
+      max-width: 920px;
+      margin: auto;
+      font-size: 1.08rem;
+      color: #667085;
+    }
+
+    .intro {
+      background: #f7fbf5;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .intro-card {
+      background: white;
+      padding: 42px;
+      border-radius: 28px;
+      box-shadow: 0 20px 60px rgba(22,129,15,0.1);
+      border: 1px solid rgba(33,139,22,0.12);
+    }
+
+    .intro-card h3 {
+      color: #16810f;
+      font-size: 2rem;
+      margin-bottom: 18px;
+    }
+
+    .quote-box {
+      background: linear-gradient(135deg, #218b16, #0d5f13);
+      color: white;
+      padding: 45px;
+      border-radius: 28px;
+      box-shadow: 0 22px 55px rgba(33,139,22,0.25);
+    }
+
+    .quote-box p {
+      font-size: 1.15rem;
+    }
+
+    .quote-box strong {
+      display: block;
+      margin-top: 22px;
+      font-weight: 500;
+      text-align: right;
+    }
+
+    .green-band {
+      background: linear-gradient(135deg, #218b16, #0b6510);
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .green-band h2 {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    .green-band p {
+      max-width: 900px;
+      margin: auto;
+      font-size: 1.15rem;
+    }
+
+    .resources {
+      background: white;
+    }
+
+    .resource-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 34px;
+    }
+
+    .resource-card {
+      background: #ffffff;
+      border-radius: 26px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 18px 50px rgba(16, 24, 40, 0.09);
+      border: 1px solid #eef4ec;
+      transition: 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .resource-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(33,139,22,0.08), transparent);
+      opacity: 0;
+      transition: 0.3s ease;
+    }
+
+    .resource-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 28px 70px rgba(33,139,22,0.18);
+    }
+
+    .resource-card:hover::before {
+      opacity: 1;
+    }
+
+    .resource-image {
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .resource-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      border-radius: 14px;
+      transition: 0.3s ease;
+    }
+
+    .resource-card:hover img {
+      transform: scale(1.04);
+    }
+
+    .resource-card h3 {
+      color: #16810f;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      min-height: 52px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .download-btn {
+      display: inline-block;
+      background: #218b16;
+      color: white;
+      text-decoration: none;
+      padding: 13px 25px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: 0.3s ease;
+      position: relative;
+      z-index: 1;
+    }
+
+    .download-btn:hover {
+      background: #145f0f;
+      transform: translateY(-3px);
+    }
+
+    .footer-cta {
+      background: #f7fbf5;
+      text-align: center;
+      padding: 80px 20px;
+    }
+
+    .footer-cta h2 {
+      color: #16810f;
+      font-size: 2.3rem;
+      margin-bottom: 18px;
+    }
+
+    .footer-cta p {
+      max-width: 850px;
+      margin: auto auto 30px;
+      color: #667085;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 1050px) {
+      .resource-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .intro-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 620px) {
+      section {
+        padding: 65px 18px;
+      }
+
+      .resource-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-image {
+        height: 260px;
+      }
+
+      .intro-card,
+      .quote-box {
+        padding: 28px;
+      }
+
+      .hero h1 {
+        letter-spacing: 4px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+  <header class="hero">
+    <div class="hero-content">
+      <h1>GECCO</h1>
+      <p>Champions for Change in the Early Years</p>
+      <div class="hero-buttons">
+        <a href="#" class="btn btn-primary">DONATE</a>
+        <a href="#" class="btn btn-light">VOLUNTEER</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="intro">
+    <div class="container">
+      <div class="section-title">
+        <span>Advice, Support & Resources</span>
+        <h2>Towards Sustainable Childcare and Education</h2>
+        <p>
+          Whether you own or run a nursery, are an early years teacher, or a parent or childminder,
+          you’ll find information here to help you make sustainable changes one step at a time.
+        </p>
+      </div>
+
+      <div class="intro-grid">
+        <div class="intro-card">
+          <h3>Small changes. Big impact.</h3>
+          <p>
+            Explore practical advice, research, and downloadable resources covering climate change,
+            environmental preservation, air pollution, biodiversity, sustainable education,
+            professional development, and socio-cultural sustainability.
+          </p>
+          <br>
+          <p>
+            These resources are designed to help families, educators, childcare providers,
+            and communities make thoughtful everyday decisions for a healthier future.
+          </p>
+        </div>
+
+        <div class="quote-box">
+          <p>
+            “If everyone makes small changes to everyday life we can make a significant difference
+            between us. Everything we buy, everything we do, should be influenced by how our decisions
+            and activities will impact on our environment.”
+          </p>
+          <strong>Cheryl Hadland</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="green-band">
+    <h2>Resources Read & Download Articles</h2>
+    <p>
+      Read and download helpful articles on sustainability in education, economic resilience,
+      GECCO partnerships, policies and standards, practical resources, and environmental preservation.
+    </p>
+  </div>
+
+  <section class="resources" id="resources">
+    <div class="container">
+      <div class="section-title">
+        <span>Download Library</span>
+        <h2>Featured Resources</h2>
+        <p>
+          Browse our latest downloadable PDFs and guides created to support sustainable early years education.
+        </p>
+      </div>
+
+      <div class="resource-grid">
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="images/home4.jpg" alt="OMEP UK Sustainable Citizenship Award">
+          </div>
+          <h3>OMEP UK Early Childhood Education Award</h3>
+          <a class="download-btn" href="documents/Introducing-the-OMEP-UK-Early-Childhood-Education-for-Sustainable-Citizenship-Award.pdf" target="_blank">
+            Download PDF
+          </a>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="images/home3.jpg" alt="Environmental Sustainability Guidance">
+          </div>
+          <h3>Environmental Sustainability Guidance</h3>
+          <a class="download-btn" href="documents/016._Environmental_Sustainability_Policy_03.2022.01.pdf" target="_blank">
+            Download PDF
+          </a>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="images/home2.jpg" alt="Asthma Awareness">
+          </div>
+          <h3>Asthma Awareness and Air Quality</h3>
+          <a class="download-btn" href="documents/GECCO-Asthma-Awareness-Week-digital.pdf" target="_blank">
+            Download PDF
+          </a>
+        </div>
+
+        <div class="resource-card">
+          <div class="resource-image">
+            <img src="images/home1.jpg" alt="Resilient Futures">
+          </div>
+          <h3>Resilient Futures Climate Guide</h3>
+          <a class="download-btn" href="https://gecco.org.uk/wp-content/uploads/2026/02/Introducing-the-OMEP-UK-Early-Childhood-Education-for-Sustainable-Citizenship-Award-1.pdf" target="_blank">
+            Download PDF
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="footer-cta">
+    <h2>Let’s do it</h2>
+    <p>
+      This is a journey we are all on. We are bound to make mistakes, but every step forward matters.
+      Share, learn, and help make the world a better place.
+    </p>
+    <a href="#resources" class="btn btn-primary">VIEW RESOURCES</a>
+  </section>
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(function(response) {
+    if (!response.ok) {
+      throw new Error('Footer not found');
+    }
+    return response.text();
+  })
+  .then(function(html) {
+    document.getElementById('footer-placeholder').innerHTML = html;
+  })
+  .catch(function(error) {
+    console.error('Footer failed to load:', error);
+  });
+</script>
+</body>
+</html>

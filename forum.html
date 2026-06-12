@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ECEC Sustainability Forum | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --soft:#f3faf1;
+  --text:#5e6675;
+  --dark:#172033;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  min-height:72vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(9,78,20,.72),rgba(35,141,25,.32));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:30px;
+}
+
+.hero-content span{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 22px;
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:999px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  font-size:13px;
+  font-weight:bold;
+}
+
+.hero h1{
+  font-size:clamp(44px,7vw,82px);
+  font-weight:300;
+  line-height:1.1;
+  margin-bottom:28px;
+}
+
+.hero-buttons{
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  flex-wrap:wrap;
+}
+
+.hero-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:170px;
+  height:64px;
+  padding:0 34px;
+  border-radius:999px;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:14px;
+  font-weight:700;
+}
+
+.hero-btn.green{
+  background:var(--green);
+  color:#fff;
+}
+
+.hero-btn.white{
+  background:#fff;
+  color:var(--green);
+}
+
+/* INTRO */
+.intro{
+  padding:90px 20px 60px;
+  text-align:center;
+}
+
+.intro h2{
+  color:var(--green);
+  font-size:clamp(32px,4vw,48px);
+  font-weight:300;
+  margin-bottom:18px;
+}
+
+.intro p{
+  max-width:900px;
+  margin:auto;
+  font-size:19px;
+}
+
+/* AIM */
+.aim-section{
+  padding:50px 0 90px;
+}
+
+.aim-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:35px;
+  align-items:stretch;
+}
+
+.aim-card{
+  background:#fff;
+  border-radius:28px;
+  padding:50px;
+  text-align:center;
+  box-shadow:0 25px 70px rgba(16,24,40,.08);
+  border:1px solid #edf4ec;
+}
+
+.aim-card.green{
+  background:linear-gradient(135deg,var(--green),var(--dark-green));
+  color:#fff;
+}
+
+.aim-card h2{
+  color:var(--green);
+  font-size:36px;
+  font-weight:300;
+  margin-bottom:22px;
+}
+
+.aim-card.green h2{
+  color:#fff;
+}
+
+.aim-card p,
+.aim-card li{
+  font-size:18px;
+}
+
+.aim-card ul{
+  list-style:none;
+}
+
+.aim-card li{
+  margin-bottom:12px;
+}
+
+/* MEMBERSHIP */
+.membership{
+  background:var(--soft);
+  padding:85px 20px;
+  text-align:center;
+}
+
+.membership h2{
+  color:var(--green);
+  font-size:42px;
+  font-weight:300;
+  margin-bottom:18px;
+}
+
+.membership p{
+  max-width:1050px;
+  margin:0 auto 22px;
+  font-size:18px;
+}
+
+/* MINUTES */
+.minutes{
+  padding:80px 0;
+}
+
+.minutes h2,
+.videos h2,
+.members h2,
+.stem h2{
+  color:var(--green);
+  text-align:center;
+  font-size:42px;
+  font-weight:300;
+  margin-bottom:35px;
+}
+
+.minutes-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:18px;
+}
+
+.minutes-grid a{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:58px;
+  border:2px solid var(--green);
+  color:var(--green);
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1px;
+  font-weight:bold;
+  border-radius:999px;
+  transition:.3s;
+}
+
+.minutes-grid a:hover{
+  background:var(--green);
+  color:#fff;
+  transform:translateY(-3px);
+}
+
+/* VIDEOS */
+.videos{
+  background:#fff;
+  padding:80px 0;
+}
+
+.feature-video{
+  max-width:900px;
+  margin:0 auto 60px;
+  text-align:center;
+}
+
+.feature-video h3{
+  color:var(--green);
+  font-size:30px;
+  font-weight:400;
+  margin-bottom:8px;
+}
+
+.feature-video p{
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.video-card{
+  background:#fff;
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 22px 60px rgba(16,24,40,.1);
+  border:1px solid #edf4ec;
+}
+
+.video-thumb{
+  position:relative;
+  display:block;
+  aspect-ratio:16/9;
+  background:#ddd;
+  overflow:hidden;
+}
+
+.video-thumb img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+
+.video-thumb::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
+  margin:auto;
+  width:72px;
+  height:52px;
+  border-radius:15px;
+  background:#ff0000;
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:28px;
+  padding-left:4px;
+}
+
+.video-content{
+  padding:22px;
+  text-align:center;
+}
+
+.video-content h3{
+  color:var(--green);
+  font-size:20px;
+  font-weight:400;
+}
+
+/* STEM */
+.stem{
+  background:var(--soft);
+  padding:90px 20px;
+  text-align:center;
+}
+
+.stem p{
+  max-width:900px;
+  margin:0 auto 22px;
+  font-size:19px;
+}
+
+/* MEMBERS */
+.members{
+  padding:90px 0;
+}
+
+.member-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:30px;
+}
+
+.member-card{
+  background:#fff;
+  border-radius:24px;
+  padding:34px;
+  text-align:center;
+  box-shadow:0 20px 55px rgba(16,24,40,.08);
+  border:1px solid #edf4ec;
+}
+
+.member-card .avatar{
+  width:74px;
+  height:74px;
+  margin:0 auto 18px;
+  border-radius:50%;
+  background:var(--soft);
+  display:grid;
+  place-items:center;
+  color:var(--green);
+  font-size:30px;
+  font-weight:bold;
+}
+
+.member-card h3{
+  color:var(--green);
+  font-size:23px;
+  font-weight:400;
+  margin-bottom:5px;
+}
+
+.member-card span{
+  display:block;
+  color:var(--green);
+  font-size:13px;
+  margin-bottom:16px;
+}
+
+.member-card p{
+  font-size:16px;
+  margin-bottom:18px;
+}
+
+.member-card a{
+  color:var(--green);
+  text-decoration:none;
+  font-weight:bold;
+}
+
+.member-card a:hover{
+  text-decoration:underline;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .aim-grid{
+    grid-template-columns:1fr;
+  }
+
+  .aim-card{
+    padding:35px 25px;
+  }
+
+  .hero{
+    min-height:62vh;
+  }
+
+  .hero h1{
+    font-size:42px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<section class="hero">
+  <img src="images/ecec.png" alt="ECEC Sustainability Forum" fetchpriority="high">
+
+  <div class="hero-content">
+    <span>ECEC</span>
+    <h1>ECEC Sustainability Forum</h1>
+
+    <div class="hero-buttons">
+      <a href="#" class="hero-btn green">Donate</a>
+      <a href="#" class="hero-btn white">Volunteer</a>
+    </div>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>The Early Childhood Education and Care Sustainability Forum</h2>
+  <p>
+    Founded in March 2021, the forum provides a platform for members of the ECEC sector
+    committed to increasing sustainability, covering all three pillars plus governance.
+  </p>
+</section>
+
+<section class="aim-section">
+  <div class="container">
+    <div class="aim-grid">
+
+      <div class="aim-card">
+        <h2>The aim of the forum</h2>
+        <p>
+          To support the development of a holistic and transformational Early Childhood Education
+          and Care sector that promotes lifelong learning and empowers the whole community of children,
+          families, professional educators and administrators.
+        </p>
+        <p>
+          The forum encourages informed decisions and responsible actions for environmental integrity,
+          economic viability and a just society for present and future generations.
+        </p>
+      </div>
+
+      <div class="aim-card green">
+        <h2>The group intends to achieve this by:</h2>
+        <ul>
+          <li>Sharing experiences and knowledge in a supportive manner.</li>
+          <li>Sharing best practice with others to role model and support sustainability.</li>
+          <li>Educating practitioners from the bottom up.</li>
+          <li>Engaging CEOs, nursery owners, local authorities, parents and politicians.</li>
+          <li>Challenging greenwash and publicising practical evidence-based research.</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="membership">
+  <h2>Membership</h2>
+  <p>
+    Membership is open to anyone in the sector with an interest in supporting, encouraging
+    and role-modelling sustainability in the ECEC sector. There are no restrictions on numbers.
+  </p>
+  <p>
+    Members meet every six weeks via Zoom, and non-members may be invited to group meetings
+    to speak and share experiences or knowledge.
+  </p>
+</section>
+
+<section class="minutes">
+  <div class="container">
+    <h2>Meeting Minutes</h2>
+
+    <div class="minutes-grid">
+      <a href="documents/Minutes-19-07-2022.pdf" target="_blank">July 2022</a>
+      <a href="documents/Minutes_22.02.22.pdf" target="_blank">Feb 2022</a>
+      <a href="documents/Minutes_02.08.21.pdf" target="_blank">Aug 2021</a>
+      <a href="documents/Minutes_07.05.21.pdf" target="_blank">May 2021</a>
+      <a href="documents/Minutes-31-05-2022.pdf" target="_blank">May 2022</a>
+      <a href="documents/Minutes_02.11.21.pdf" target="_blank">Nov 2021</a>
+      <a href="documents/Minutes_28.09.21.pdf" target="_blank">Sept 2021</a>
+      <a href="documents/Minutes-05-04-2022.pdf" target="_blank">April 2022</a>
+    </div>
+  </div>
+</section>
+
+<section class="videos">
+  <div class="container">
+    <h2>Forum Meetings</h2>
+
+    <div class="feature-video">
+      <h3>Sustainable Development Goal 8: Decent Work and Economic Growth</h3>
+      <p>Watch the latest ECEC sustainability discussion.</p>
+
+      <a class="video-thumb" href="https://www.youtube.com/watch?v=HqcFeKCvEgI" target="_blank">
+        <img src="https://img.youtube.com/vi/HqcFeKCvEgI/maxresdefault.jpg" alt="Sustainable Development Goal 8 video">
+      </a>
+    </div>
+
+    <div class="video-grid">
+
+      <div class="video-card">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=HqcFeKCvEgI" target="_blank">
+          <img src="https://img.youtube.com/vi/HqcFeKCvEgI/hqdefault.jpg" alt="">
+        </a>
+        <div class="video-content">
+          <h3>1st July 2024 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank">
+          <img src="images/ecec.png" alt="">
+        </a>
+        <div class="video-content">
+          <h3>7th March 2024 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank">
+          <img src="images/ecec.png" alt="">
+        </a>
+        <div class="video-content">
+          <h3>22 November 2023 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="#" target="_blank">
+          <img src="images/ecec.png" alt="">
+        </a>
+        <div class="video-content">
+          <h3>18 July 2023 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=jflL7DpPiuw" target="_blank">
+          <img src="https://img.youtube.com/vi/jflL7DpPiuw/hqdefault.jpg" alt="">
+        </a>
+        <div class="video-content">
+          <h3>22 May 2023 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=KUlHQM7oHCQ" target="_blank">
+          <img src="https://img.youtube.com/vi/KUlHQM7oHCQ/hqdefault.jpg" alt="">
+        </a>
+        <div class="video-content">
+          <h3>31 January 2023 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+      <div class="video-card">
+        <a class="video-thumb" href="https://www.youtube.com/watch?v=0DyqaoD6V5E" target="_blank">
+          <img src="https://img.youtube.com/vi/0DyqaoD6V5E/hqdefault.jpg" alt="">
+        </a>
+        <div class="video-content">
+          <h3>22 February 2022 – ECEC Sustainability Meeting</h3>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="stem">
+  <h2>STEM and Sustainability</h2>
+  <p>“Trying to help children understand that nature got here first.”</p>
+  <p>
+    How do children learn about potential occupations? Does assigning gender to career paths
+    become a sustainable method of learning or teaching? Watch the video to find out.
+  </p>
+</section>
+
+<section class="members">
+  <div class="container">
+    <h2>Current Members</h2>
+
+    <div class="member-grid">
+
+      <div class="member-card">
+        <div class="avatar">N</div>
+        <h3>Nick Corlett</h3>
+        <span>Senior Nursery Manager and Sustainability Lead for LEYF</span>
+        <p>Recently working with sustainability qualifications, Eco Champions and community-based green projects.</p>
+        <a href="https://www.leyf.org.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">M</div>
+        <h3>Mark Bird</h3>
+        <span>H&S Director of Childbase Partnership</span>
+        <p>Sustainability accreditation, Green Flag nurseries and the journey towards zero carbon by 2030.</p>
+        <a href="https://childbasepartnership.com/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">C</div>
+        <h3>Cheryl Hadland</h3>
+        <span>Founder and Managing Director of Tops Day Nurseries</span>
+        <p>Championing sustainability through good practice, leadership and practical change across nursery settings.</p>
+        <a href="https://www.topsdaynurseries.co.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">J</div>
+        <h3>John Siraj-Blatchford</h3>
+        <span>Academic and OMEP-UK Executive</span>
+        <p>Published widely on early childhood education for sustainable development and citizenship.</p>
+        <a href="https://omep.org.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">A</div>
+        <h3>Amy Flack</h3>
+        <span>Outreach Officer at Enya’s Childcare</span>
+        <p>Promoting community-driven sustainability practices and practical positive change.</p>
+        <a href="https://www.enyas.co.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">B</div>
+        <h3>Barbara Chaitoff</h3>
+        <span>Sustainability Lead for Tops Day Nurseries</span>
+        <p>Driving sustainable environments and encouraging staff to reduce waste and recycle.</p>
+        <a href="https://www.topsdaynurseries.co.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">D</div>
+        <h3>Diane Boyd</h3>
+        <span>Academic at Liverpool John Moores University</span>
+        <p>Researching early childhood education, sustainability and children’s involvement.</p>
+        <a href="https://www.ljmu.ac.uk/about-us/staff-profiles/faculty-of-arts-professional-and-social-studies/school-of-education/diane-boyd" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">E</div>
+        <h3>Enya Mooney</h3>
+        <span>Founder of Enya's Childcare & Forest School</span>
+        <p>Passionate about project-based and child-led learning with sustainability at the centre.</p>
+        <a href="https://www.enyas.co.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">T</div>
+        <h3>Theo Kuehn</h3>
+        <span>Sustainability Manager at Cosy Direct</span>
+        <p>Supporting sustainability through responsible business and education-focused initiatives.</p>
+        <a href="https://www.cosydirect.com/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">N</div>
+        <h3>Naomi McLeod</h3>
+        <span>Academic at Liverpool John Moores University</span>
+        <p>Focused on interconnected sustainability across environmental, economic, political and social systems.</p>
+        <a href="https://www.ljmu.ac.uk/about-us/staff-profiles/faculty-of-arts-professional-and-social-studies/school-of-education/diane-boyd" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">C</div>
+        <h3>Claire Brown</h3>
+        <span>Impact Manager at N Family Club</span>
+        <p>Working towards Eco School Green Flag and building team engagement around sustainability.</p>
+        <a href="https://nfamilyclub.com/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">J</div>
+        <h3>Janet King</h3>
+        <span>CACHE Senior Subject Specialist Childcare</span>
+        <p>Exploring science in Early Years and opportunities to raise sustainability awareness.</p>
+        <a href="https://www.ncfe.org.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">L</div>
+        <h3>Louise Lloyd-Evans</h3>
+        <span>Managing Director of Young Friends Nature Nursery</span>
+        <p>Dedicated to sustainability and teaching children sustainable practice every day.</p>
+        <a href="https://youngfriends.co.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">P</div>
+        <h3>Peter Ellse</h3>
+        <span>CEO of Cosy Direct</span>
+        <p>Using sustainability reporting to set new vision and mission across the organisation.</p>
+        <a href="https://www.cosydirect.com/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">S</div>
+        <h3>Shweta Bahri</h3>
+        <span>Curriculum Facilitator</span>
+        <p>Part of Earth Warriors, a climate education curriculum for children aged 3–11.</p>
+        <a href="https://earthwarriorsglobal.com/" target="_blank">Visit Website →</a>
+      </div>
+
+      <div class="member-card">
+        <div class="avatar">A</div>
+        <h3>Amanda Hubball</h3>
+        <span>Teacher at Alfreton Nursery School</span>
+        <p>Leading outdoor STEM education around deforestation, pollution and climate change.</p>
+        <a href="https://alfreton.derbyshire.sch.uk/" target="_blank">Visit Website →</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+
+</body>
+</html>

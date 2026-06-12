@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Positive Impact on People | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --soft-green:#f3faf1;
+  --text:#5e6675;
+  --dark:#172033;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  min-height:72vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  color:#fff;
+  overflow:hidden;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(5,70,18,.75),rgba(35,141,25,.32));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:850px;
+  padding:30px;
+}
+
+.hero-content span{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 22px;
+  border:1px solid rgba(255,255,255,.7);
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.hero h1{
+  font-size:clamp(46px,7vw,86px);
+  font-weight:300;
+  line-height:1.05;
+  margin-bottom:22px;
+}
+
+.hero p{
+  font-size:clamp(18px,2vw,25px);
+  max-width:720px;
+  margin:auto;
+}
+
+/* INTRO */
+.intro{
+  padding:85px 20px 45px;
+  text-align:center;
+}
+
+.intro h2{
+  color:var(--green);
+  font-size:clamp(32px,4vw,48px);
+  font-weight:300;
+  margin-bottom:20px;
+}
+
+.intro p{
+  max-width:1100px;
+  margin:0 auto 24px;
+  font-size:19px;
+}
+
+/* CARDS */
+.section{
+  padding:60px 0;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:32px;
+}
+
+.card{
+  background:#fff;
+  padding:42px;
+  border-radius:26px;
+  box-shadow:0 22px 65px rgba(16,24,40,.08);
+  border:1px solid #edf4ec;
+}
+
+.card.green{
+  background:linear-gradient(135deg,var(--green),var(--dark-green));
+  color:#fff;
+}
+
+.card h3{
+  color:var(--green);
+  font-size:32px;
+  font-weight:400;
+  margin-bottom:18px;
+}
+
+.card.green h3{
+  color:#fff;
+}
+
+.card p{
+  font-size:18px;
+  margin-bottom:16px;
+}
+
+.card ul{
+  padding-left:22px;
+}
+
+.card li{
+  margin-bottom:12px;
+  font-size:18px;
+}
+
+.full{
+  grid-column:1 / -1;
+}
+
+/* POLICY CONTENT */
+.policy-wrap{
+  background:var(--soft-green);
+  padding:90px 0;
+}
+
+.policy-box{
+  background:#fff;
+  border-radius:34px;
+  padding:55px;
+  box-shadow:0 30px 90px rgba(16,24,40,.09);
+}
+
+.policy-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:34px;
+}
+
+.policy-item{
+  padding:28px;
+  border-radius:22px;
+  background:#fbfdfb;
+  border:1px solid #e7f0e5;
+}
+
+.policy-item h3{
+  color:var(--green);
+  font-size:25px;
+  font-weight:400;
+  margin-bottom:14px;
+}
+
+.policy-item p,
+.policy-item li{
+  font-size:17px;
+}
+
+.policy-item ul{
+  padding-left:20px;
+}
+
+/* DOWNLOAD */
+.download-section{
+  padding:90px 20px;
+}
+
+.policy-download{
+  text-align:center;
+  max-width:760px;
+  margin:auto;
+  padding:60px 40px;
+  background:#fff;
+  border-radius:30px;
+  box-shadow:0 20px 60px rgba(0,0,0,.08);
+}
+
+.author{
+  font-size:30px;
+  color:#172033;
+  margin-bottom:10px;
+  font-weight:300;
+}
+
+.role{
+  font-size:18px;
+  color:#666;
+  margin-bottom:35px;
+}
+
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:260px;
+  height:68px;
+  padding:0 40px;
+  background:#238d19;
+  color:#fff;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:700;
+  font-size:14px;
+  border-radius:999px;
+  transition:.3s ease;
+  box-shadow:0 12px 30px rgba(35,141,25,.3);
+}
+
+.download-btn:hover{
+  background:#176c11;
+  transform:translateY(-4px);
+}
+
+/* LEADERSHIP */
+.leadership-section{
+  padding:90px 0;
+  background:#f3faf1;
+}
+
+.leadership-card{
+  background:linear-gradient(135deg,#238d19,#0b4f12);
+  color:#fff;
+  border-radius:32px;
+  padding:65px 55px;
+  box-shadow:0 30px 80px rgba(35,141,25,.25);
+}
+
+.leadership-heading{
+  max-width:780px;
+  margin:auto;
+  text-align:center;
+  margin-bottom:42px;
+}
+
+.leadership-heading span{
+  display:inline-block;
+  margin-bottom:16px;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:12px;
+  font-weight:700;
+  opacity:.85;
+}
+
+.leadership-heading h2{
+  font-size:clamp(34px,4vw,52px);
+  font-weight:300;
+  margin-bottom:18px;
+}
+
+.leadership-heading p{
+  font-size:19px;
+}
+
+.leadership-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:18px;
+}
+
+.leadership-item{
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:18px;
+  padding:24px 18px;
+  text-align:center;
+  font-size:16px;
+}
+
+/* MOBILE */
+@media(max-width:1000px){
+  .leadership-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media(max-width:900px){
+  .grid,
+  .policy-grid{
+    grid-template-columns:1fr;
+  }
+
+  .full{
+    grid-column:auto;
+  }
+
+  .card,
+  .policy-box{
+    padding:30px;
+  }
+
+  .hero{
+    min-height:62vh;
+  }
+
+  .intro p,
+  .card p,
+  .card li{
+    font-size:16px;
+  }
+}
+
+@media(max-width:600px){
+  .leadership-grid{
+    grid-template-columns:1fr;
+  }
+
+  .leadership-card{
+    padding:42px 25px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<!-- HERO -->
+<section class="hero">
+  <img src="images/hero-people.webp" alt="Positive impact on people" fetchpriority="high">
+
+  <div class="hero-content">
+    <span>People First</span>
+    <h1>Positive Impact on People</h1>
+    <p>Supporting children, parents, colleagues, learners and the wider community.</p>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>Our Purpose</h2>
+
+  <p>
+    Our purpose is to provide care and education to children and to support their parents.
+    These impacts are measured through our KPIs and aligned with the United Nations Sustainable Development Goals.
+  </p>
+
+  <p>
+    We aim for all children to achieve good levels of development, while also providing meaningful careers
+    for colleagues and learners.
+  </p>
+
+  <p>
+    We promote the health and well-being of colleagues and volunteers through inclusive policies,
+    support initiatives, practical benefits and a culture of care.
+  </p>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid">
+
+      <div class="card">
+        <h3>Protecting People</h3>
+        <p>We ensure that we:</p>
+        <ul>
+          <li>Protect the health and safety of employees and the community.</li>
+          <li>Avoid harming the lives of local people.</li>
+          <li>Support diversity and inclusion.</li>
+          <li>Take economic responsibility.</li>
+          <li>Maintain risk registers and access statements for each building.</li>
+        </ul>
+      </div>
+
+      <div class="card green">
+        <h3>Volunteering</h3>
+        <p>
+          The company welcomes volunteers from schools, young people, adults exploring childcare careers,
+          and community partners such as churches, hospitals and care homes.
+        </p>
+        <p>
+          Colleagues are supported to volunteer through flexible time arrangements, while the company
+          contributes to social impact through fundraising, food banks, shared resources and recycling collections.
+        </p>
+      </div>
+
+      <div class="card full">
+        <h3>Human Rights</h3>
+        <p>
+          We are a committed equal opportunity employer and abide by fair labour practices.
+          We ensure that our activities do not directly or indirectly violate human rights in any country,
+          including forced labour.
+        </p>
+        <p>
+          We engage in gender pay reporting and work to reduce any gaps identified.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="policy-wrap">
+  <div class="container">
+    <div class="policy-box">
+
+      <div class="policy-grid">
+
+        <div class="policy-item">
+          <h3>Donations and Aid</h3>
+          <p>
+            The company allocates 1% of EBITDA to each of its two core charities: GECCO and the Employee Trust.
+            Donations focus on alleviating need, supporting sustainability education and building community partnerships.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Supporting the Community</h3>
+          <p>
+            The company prioritises the health and safety of employees, learners and the wider community,
+            maintaining risk registers and access statements for each building and department.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Transparency</h3>
+          <p>
+            The organisation is committed to honesty and openness in all communications, requiring colleagues
+            to report truthfully in sustainability reports, financial reports, questionnaires and press releases.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Human Rights and Diversity</h3>
+          <p>
+            We ensure compliance with fair labour practices, gender pay equality, diversity, inclusion and
+            avoidance of human rights violations.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Learning and Educating</h3>
+          <p>
+            The company invests in professional development, training and research projects to improve operations
+            and reduce environmental impact.
+          </p>
+          <ul>
+            <li>Tracking child development and staff progression.</li>
+            <li>Conducting training needs analyses.</li>
+            <li>Assessing financial impacts on staff.</li>
+          </ul>
+        </div>
+
+        <div class="policy-item">
+          <h3>Environmental Protection</h3>
+          <p>
+            The company protects the environment through sustainable purchasing, reducing single-use plastics,
+            recycling, conserving energy, renewable technologies and minimising fossil fuel use.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Sustainable Transport Policy</h3>
+          <p>
+            Every location has a green transport policy relevant to that location, including public transport routes,
+            advice for walkers and cyclists, car sharing opportunities and moving to electric vehicles.
+          </p>
+        </div>
+
+        <div class="policy-item">
+          <h3>Community Engagement</h3>
+          <p>
+            The company supports colleagues’ charitable efforts and provides engagement through local initiatives,
+            cultural celebrations, environmental campaigns and company-led programmes.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</section>
+<section class="leadership-section">
+  <div class="container">
+    <div class="leadership-card">
+
+      <div class="leadership-heading">
+        <span>Leadership</span>
+        <h2>Accreditations & Benchmarking</h2>
+        <p>
+          Encouraging colleagues to drive sustainability, ethics, health and safety improvements.
+        </p>
+      </div>
+
+      <div class="leadership-grid">
+        <div class="leadership-item">Board members are predominantly female.</div>
+        <div class="leadership-item">Diversity is actively promoted.</div>
+        <div class="leadership-item">ESOS improvement action plans implemented.</div>
+        <div class="leadership-item">Investors in People accreditation for 15+ years.</div>
+        <div class="leadership-item">Eco Awards recognise sustainability excellence.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="download-section">
+  <div class="policy-download">
+    <p class="author">Cheryl Hadland</p>
+    <p class="role">Founder and Managing Director</p>
+
+    <a
+      href="documents/016._Environmental_Sustainability_Policy_03.2022.01.pdf"
+      target="_blank"
+      class="download-btn"
+    >
+      Download Full Policy
+    </a>
+  </div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+
+</body>
+</html>

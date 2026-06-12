@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Volunteer | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --soft:#f3faf1;
+  --text:#5e6675;
+  --dark:#172033;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  min-height:72vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(8,80,20,.74),rgba(35,141,25,.32));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:30px;
+}
+
+.hero-content span{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 22px;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.hero h1{
+  font-size:clamp(48px,7vw,86px);
+  font-weight:300;
+  line-height:1.1;
+}
+
+/* INTRO */
+.volunteer-intro{
+  padding:90px 0;
+  background:#f3faf1;
+}
+
+.volunteer-card{
+  background:#fff;
+  border-radius:34px;
+  padding:70px 55px;
+  text-align:center;
+  box-shadow:0 30px 80px rgba(16,24,40,.08);
+  border:1px solid #e6f0e4;
+}
+
+.volunteer-card h2{
+  color:var(--green);
+  font-size:clamp(36px,4vw,56px);
+  font-weight:300;
+  margin-bottom:25px;
+}
+
+.volunteer-card .lead{
+  font-size:22px;
+  max-width:900px;
+  margin:0 auto 20px;
+  color:#4f5b6b;
+}
+
+.volunteer-card p{
+  max-width:900px;
+  margin:0 auto;
+  font-size:18px;
+  color:#5e6675;
+}
+
+/* BENEFITS */
+.benefits-grid{
+  margin-top:55px;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:24px;
+}
+
+.benefit{
+  background:#f8fcf7;
+  border:1px solid #dbeed8;
+  border-radius:22px;
+  padding:30px 24px;
+  transition:.3s ease;
+}
+
+.benefit:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 45px rgba(16,24,40,.08);
+}
+
+.benefit span{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:52px;
+  height:52px;
+  margin:0 auto 16px;
+  border-radius:50%;
+  background:var(--green);
+  color:#fff;
+  font-size:22px;
+  font-weight:bold;
+}
+
+.benefit h3{
+  color:var(--green);
+  margin-bottom:10px;
+  font-size:22px;
+  font-weight:400;
+}
+
+.benefit p{
+  font-size:16px;
+}
+
+/* CONTACT */
+.volunteer-contact{
+  margin-top:60px;
+  padding-top:40px;
+  border-top:1px solid #e8efe6;
+}
+
+.volunteer-contact h3{
+  color:var(--dark);
+  font-size:32px;
+  font-weight:300;
+  margin-bottom:10px;
+}
+
+.volunteer-contact p{
+  margin-bottom:25px;
+}
+
+.volunteer-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:220px;
+  height:62px;
+  background:var(--green);
+  color:#fff;
+  text-decoration:none;
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.volunteer-btn:hover{
+  background:#176c11;
+  transform:translateY(-3px);
+}
+
+/* CTA */
+.cta{
+  padding:85px 20px;
+  text-align:center;
+}
+
+.cta h2{
+  color:var(--dark);
+  font-size:clamp(32px,4vw,46px);
+  font-weight:300;
+  margin-bottom:16px;
+}
+
+.cta p{
+  max-width:760px;
+  margin:auto;
+  font-size:19px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .benefits-grid{
+    grid-template-columns:1fr;
+  }
+
+  .volunteer-card{
+    padding:45px 25px;
+  }
+
+  .volunteer-card .lead{
+    font-size:18px;
+  }
+
+  .volunteer-card p{
+    font-size:16px;
+  }
+
+  .hero{
+    min-height:62vh;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<section class="hero">
+  <img src="images/hero-volunteer.jpg" alt="Volunteer with GECCO" fetchpriority="high">
+
+  <div class="hero-content">
+    <span>Join The Mission</span>
+    <h1>Volunteer</h1>
+  </div>
+</section>
+
+<section class="volunteer-intro">
+  <div class="container">
+    <div class="volunteer-card">
+
+      <h2>Become a Volunteer</h2>
+
+      <p class="lead">
+        To become a volunteer, all you need is enthusiasm and the motivation to help.
+        You can choose how much time you give and we’ll provide the training and support you need.
+      </p>
+
+      <p>
+        Whoever you are and however you choose to volunteer, you’ll be part of a supportive community
+        coming together to make a significant contribution to early childhood education for sustainable
+        citizenship and children’s future lives.
+      </p>
+
+      <div class="benefits-grid">
+
+        <div class="benefit">
+          <span>✓</span>
+          <h3>Learn Skills</h3>
+          <p>Learn useful skills and practical knowledge.</p>
+        </div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <h3>Gain Experience</h3>
+          <p>Build valuable experience while helping others.</p>
+        </div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <h3>Meet People</h3>
+          <p>Meet new people and make meaningful contacts.</p>
+        </div>
+
+        <div class="benefit">
+          <span>✓</span>
+          <h3>Make a Difference</h3>
+          <p>Share your knowledge and create real impact.</p>
+        </div>
+
+      </div>
+
+      <div class="volunteer-contact">
+        <h3>Ready to Get Involved?</h3>
+
+        <p>
+          Contact us today to find out how you can contribute.
+        </p>
+
+        <a href="mailto:gecco@gecco.org.uk" class="volunteer-btn">
+          Contact Us
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Every contribution matters</h2>
+  <p>
+    Your time, skills and enthusiasm can help support sustainability education,
+    community awareness and positive environmental action.
+  </p>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Donations | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --soft:#f3faf1;
+  --text:#4f5b6b;
+  --dark:#172033;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+/* HERO */
+.hero{
+  min-height:72vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(8,80,20,.72),rgba(35,141,25,.32));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  padding:30px;
+}
+
+.hero-content span{
+  display:inline-block;
+  margin-bottom:18px;
+  padding:10px 22px;
+  border:1px solid rgba(255,255,255,.75);
+  border-radius:999px;
+  text-transform:uppercase;
+  letter-spacing:3px;
+  font-size:13px;
+  font-weight:700;
+}
+
+.hero h1{
+  font-size:clamp(48px,7vw,86px);
+  font-weight:300;
+  line-height:1.1;
+  margin-bottom:28px;
+}
+
+.hero-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:180px;
+  height:64px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--green);
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:4px;
+  font-size:14px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.hero-btn:hover{
+  transform:translateY(-3px);
+}
+
+/* INTRO */
+.intro{
+  padding:90px 20px 60px;
+  text-align:center;
+}
+
+.intro h2{
+  color:var(--green);
+  font-size:clamp(32px,4vw,50px);
+  font-weight:300;
+  margin-bottom:22px;
+}
+
+.intro p{
+  max-width:1050px;
+  margin:auto;
+  font-size:19px;
+  color:#4f5b6b;
+  opacity:1;
+}
+
+/* DONATION OPTIONS */
+.donation-section{
+  padding:90px 0 110px;
+  background:#f3faf1;
+}
+
+.donation-main-card{
+  background:#ffffff;
+  color:#4f5b6b;
+  border-radius:34px;
+  padding:65px 50px;
+  text-align:center;
+  box-shadow:0 30px 85px rgba(16,24,40,.10);
+  border:1px solid #dbeed8;
+}
+
+.donation-main-card,
+.donation-main-card *,
+.option,
+.option *{
+  opacity:1 !important;
+}
+
+.donation-main-card h2{
+  color:#238d19 !important;
+  font-size:clamp(34px,4vw,52px);
+  font-weight:300;
+  margin-bottom:20px;
+}
+
+.donation-main-card > p{
+  color:#4f5b6b !important;
+  max-width:850px;
+  margin:0 auto 24px;
+  font-size:19px;
+}
+
+.donation-options{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:25px;
+  margin-top:40px;
+}
+
+.option{
+  background:#ffffff;
+  border:1px solid #dbeed8;
+  border-radius:24px;
+  padding:38px 30px;
+  box-shadow:0 14px 38px rgba(16,24,40,.06);
+}
+
+.option h3{
+  color:#238d19 !important;
+  font-size:26px;
+  font-weight:400;
+  margin-bottom:14px;
+}
+
+.option p{
+  color:#4f5b6b !important;
+  font-size:17px;
+  max-width:480px;
+  margin:0 auto;
+}
+
+.option a{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin-top:28px;
+  min-width:190px;
+  height:56px;
+  border-radius:999px;
+  background:#238d19;
+  color:#fff !important;
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:13px;
+  font-weight:700;
+  transition:.3s;
+}
+
+.option a:hover{
+  background:#176c11;
+  transform:translateY(-3px);
+}
+
+/* CONTACT */
+.contact-strip{
+  padding:80px 20px;
+  text-align:center;
+}
+
+.contact-strip h2{
+  color:var(--dark);
+  font-size:clamp(32px,4vw,46px);
+  font-weight:300;
+  margin-bottom:15px;
+}
+
+.contact-strip p{
+  font-size:19px;
+  color:#4f5b6b;
+}
+
+.contact-strip a{
+  color:var(--green);
+  font-weight:bold;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:850px){
+  .donation-options{
+    grid-template-columns:1fr;
+  }
+
+  .donation-main-card{
+    padding:45px 25px;
+  }
+
+  .intro p,
+  .donation-main-card > p{
+    font-size:16px;
+  }
+
+  .hero{
+    min-height:62vh;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<section class="hero">
+  <img src="images/hero-donations.jpg" alt="GECCO donations" fetchpriority="high">
+
+  <div class="hero-content">
+    <span>Support GECCO</span>
+    <h1>Donations</h1>
+    <a href="#donate" class="hero-btn">Volunteer</a>
+  </div>
+</section>
+
+<section class="intro">
+  <h2>100% of your donation goes towards the work we do.</h2>
+  <p>
+    Our management and governance is provided by our trustees as an entirely voluntary commitment.
+    Our promotional expenses, including the funding of this website, come from the donations we receive,
+    allowing your support to go directly towards our environmental and educational work.
+  </p>
+</section>
+
+<section class="donation-section" id="donate">
+  <div class="container">
+    <div class="donation-main-card">
+      <h2>You can donate in various ways</h2>
+      <p>
+        Your contribution helps GECCO continue supporting sustainability education,
+        environmental awareness and community-focused projects.
+      </p>
+
+      <div class="donation-options">
+
+        <div class="option">
+          <h3>Give As You Live</h3>
+          <p>
+            Support GECCO while shopping online at no extra cost to you.
+            Retailers donate on your behalf when you shop through the platform.
+          </p>
+          <a href="https://www.giveasyoulive.com/charity/gecco" target="_blank">
+            Donate
+          </a>
+        </div>
+
+        <div class="option">
+          <h3>EasyFundraising</h3>
+          <p>
+            Raise free donations every time you shop online. You do not pay more;
+            the donation comes from the seller, not the buyer.
+          </p>
+          <a href="https://www.easyfundraising.org.uk/causes/gecco/?utm_campaign=raise-more&utm_medium=clipboard&utm_content=rm-cpl%20" target="_blank">
+            Support Us
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact-strip">
+  <h2>Questions about donating?</h2>
+  <p>
+    Please contact us at
+    <a href="mailto:gecco@gecco.org.uk">gecco@gecco.org.uk</a>
+  </p>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+
+</body>
+</html>

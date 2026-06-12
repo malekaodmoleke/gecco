@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meet The Team | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --soft-green:#f3faf1;
+  --text:#5f6673;
+  --dark:#172033;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.7;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+.hero{
+  min-height:72vh;
+  position:relative;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  overflow:hidden;
+  color:#fff;
+}
+
+.hero img{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(120deg,rgba(11,79,18,.78),rgba(35,141,25,.35));
+}
+
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+  padding:30px;
+}
+
+.hero-content h1{
+  font-size:clamp(44px,7vw,82px);
+  font-weight:300;
+  letter-spacing:2px;
+  margin-bottom:20px;
+}
+
+.hero-content p{
+  font-size:20px;
+  max-width:760px;
+  margin:0 auto 30px;
+}
+
+
+.btn:hover{
+  background:#fff;
+  color:var(--green);
+}
+
+.intro{
+  padding:90px 0 60px;
+  text-align:center;
+}
+
+.section-label{
+  text-transform:uppercase;
+  letter-spacing:8px;
+  color:var(--green);
+  font-size:12px;
+  font-weight:bold;
+  margin-bottom:18px;
+}
+
+.intro h2{
+  color:var(--dark);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:300;
+  margin-bottom:22px;
+}
+
+.intro p{
+  max-width:900px;
+  margin:auto;
+  font-size:20px;
+}
+
+.team-section{
+  padding:40px 0 90px;
+}
+
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:34px;
+}
+
+.team-card{
+  background:#fff;
+  border-radius:24px;
+  overflow:hidden;
+  box-shadow:0 20px 55px rgba(16,24,40,.1);
+  border:1px solid #edf3ec;
+}
+
+.team-card img{
+  width:100%;
+  height:360px;
+  object-fit:cover;
+  display:block;
+}
+
+.team-content{
+  padding:30px;
+}
+
+.team-content h3{
+  color:var(--green);
+  font-size:26px;
+  font-weight:400;
+  margin-bottom:6px;
+}
+
+.team-content span{
+  display:block;
+  color:#172033;
+  font-weight:bold;
+  margin-bottom:14px;
+}
+
+.team-content p{
+  font-size:16px;
+  margin-bottom:14px;
+}
+
+details{
+  margin-top:18px;
+  border-top:1px solid #e7eee5;
+  padding-top:16px;
+}
+
+summary{
+  cursor:pointer;
+  color:var(--green);
+  font-weight:bold;
+}
+
+details p{
+  margin-top:15px;
+}
+
+.impact{
+  background:var(--soft-green);
+  padding:80px 0;
+}
+
+.impact-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:24px;
+}
+
+.impact-card{
+  background:#fff;
+  text-align:center;
+  padding:40px 25px;
+  border-radius:20px;
+  box-shadow:0 18px 45px rgba(16,24,40,.08);
+}
+
+.impact-card h3{
+  color:var(--green);
+  font-size:42px;
+  margin-bottom:8px;
+}
+
+.impact-card p{
+  color:var(--dark);
+  font-weight:bold;
+}
+
+.quote{
+  padding:90px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,var(--green),var(--dark-green));
+  color:#fff;
+}
+
+.quote blockquote{
+  max-width:900px;
+  margin:auto;
+  font-size:clamp(28px,4vw,48px);
+  font-weight:300;
+  line-height:1.35;
+}
+
+.quote span{
+  display:block;
+  margin-top:25px;
+  font-size:18px;
+}
+
+.cta{
+  padding:90px 20px;
+  text-align:center;
+}
+
+.cta h2{
+  color:var(--dark);
+  font-size:clamp(34px,4vw,52px);
+  font-weight:300;
+  margin-bottom:18px;
+}
+
+.cta p{
+  max-width:760px;
+  margin:0 auto 30px;
+  font-size:20px;
+}
+
+.cta .btn{
+  color:var(--green);
+  margin:6px;
+}
+
+.cta .btn:hover{
+  background:var(--green);
+  color:#fff;
+}
+
+.hero-btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+
+    min-width:180px;
+    height:86px;
+
+    padding:0 40px;
+
+    border-radius:999px;
+
+    font-size:20px;
+    font-weight:700;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    text-decoration:none;
+
+    transition:all .3s ease;
+}
+
+/* Green Button */
+.hero-btn-primary{
+    background:#218b16;
+    color:#fff;
+}
+
+.hero-btn-primary:hover{
+    background:#16750f;
+    transform:translateY(-3px);
+}
+
+/* White Button */
+.hero-btn-secondary{
+    background:#fff;
+    color:#218b16;
+}
+
+.hero-btn-secondary:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 25px rgba(0,0,0,.15);
+}
+
+@media(max-width:700px){
+  .team-card img{
+    height:300px;
+  }
+
+  .hero-content p,
+  .intro p,
+  .cta p{
+    font-size:17px;
+  }
+}
+</style>
+</head>
+
+<body>
+  <div id="header-placeholder"></div>
+
+  <script>
+  fetch('./header.html')
+    .then(response => response.text())
+    .then(data => {
+      const placeholder = document.getElementById('header-placeholder');
+      placeholder.innerHTML = data;
+
+      placeholder.querySelectorAll('script').forEach(oldScript => {
+        const script = document.createElement('script');
+        if (oldScript.src) {
+          script.src = oldScript.src;
+        } else {
+          script.textContent = oldScript.textContent;
+        }
+        document.head.appendChild(script);
+        oldScript.remove();
+      });
+    });
+  </script>
+
+<section class="hero">
+  <img src="images/hero-meet-the-team.jpg" alt="Meet the GECCO team" fetchpriority="high">
+
+  <div class="hero-content">
+    <h1>Meet The Team</h1>
+    <p>
+      The passionate educators, sustainability leaders and trustees behind GECCO.
+    </p>
+    <a href="#team" class="hero-btn hero-btn-primary">MEET THE TRUSTEES</a>
+  </div>
+</section>
+
+<section class="intro">
+  <div class="container">
+    <div class="section-label">The Team</div>
+    <h2>Behind Greatness</h2>
+    <p>
+      Our trustees combine expertise in education, sustainability, environmental leadership,
+      early years development and community impact. Together, they help drive GECCO’s mission
+      to create a more sustainable future for children.
+    </p>
+  </div>
+</section>
+
+<section class="team-section" id="team">
+  <div class="container">
+    <div class="team-grid">
+
+      <article class="team-card">
+        <img src="images/cheryl.webp" alt="Cheryl Hadland">
+        <div class="team-content">
+          <h3>Cheryl Hadland</h3>
+          <span>Founder of GECCO</span>
+          <p>
+            Cheryl is the Managing Director of Hadland Care Group and founder of GECCO,
+            with a passion for sustainable education and environmental action.
+          </p>
+          <details>
+            <summary>Read Biography</summary>
+            <p>
+              Cheryl is an avid diver with many years of experience and has seen first-hand
+              the damage that plastic can cause in the ocean. After learning about the
+              consequences of everyday actions, Cheryl founded GECCO in 2017.
+            </p>
+            <p>
+              She completed a course in Sustainable Leadership at the University of Cambridge
+              and works to educate staff, parents, children and the community on becoming more
+              aware of the impact of their decisions and activities.
+            </p>
+          </details>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="images/john.webp" alt="John Siraj-Blatchford">
+        <div class="team-content">
+          <h3>John Siraj-Blatchford</h3>
+          <span>Education & Sustainability Advisor</span>
+          <p>
+            John provides academic and practical pedagogic expertise, supporting GECCO’s
+            education for sustainable citizenship work.
+          </p>
+          <details>
+            <summary>Read Biography</summary>
+            <p>
+              John has worked for many years in teacher education and was most recently
+              employed at the University of Cambridge Faculty of Education.
+            </p>
+            <p>
+              He has written widely on Education for Sustainable Development and actively
+              promotes effective sustainability learning through play.
+            </p>
+          </details>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="images/diane.webp" alt="Diane Boyd">
+        <div class="team-content">
+          <h3>Diane Boyd</h3>
+          <span>Early Years Education Specialist</span>
+          <p>
+            Diane brings over 40 years of education experience, supporting children,
+            students and practitioners in sustainable learning.
+          </p>
+          <details>
+            <summary>Read Biography</summary>
+            <p>
+              Diane has taught children aged 3–11 and spent many years in Higher Education,
+              supporting students in understanding child development and teaching practice.
+            </p>
+            <p>
+              Her work focuses on education for sustainability, climate action and giving
+              agency to young children.
+            </p>
+          </details>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="images/barbara.webp" alt="Barbara Chaitoff">
+        <div class="team-content">
+          <h3>Barbara Chaitoff</h3>
+          <span>Trainer & Sustainability Lead</span>
+          <p>
+            Barbara is a trainer with experience in Early Years, sustainability leadership
+            and supporting nursery teams.
+          </p>
+          <details>
+            <summary>Read Biography</summary>
+            <p>
+              Barbara trained in Early Years and has worked across nursery management,
+              training, safeguarding and sustainability roles.
+            </p>
+            <p>
+              She supports learners and practitioners in embedding sustainability into
+              Early Years education and everyday practice.
+            </p>
+          </details>
+        </div>
+      </article>
+
+      <article class="team-card">
+        <img src="images/micah.webp" alt="Micah Faure">
+        <div class="team-content">
+          <h3>Micah Faure</h3>
+          <span>Legal Director</span>
+          <p>
+            Micah is the Legal Director at Hadland Care Group and supports GECCO with
+            a strong commitment to conservation and positive social change.
+          </p>
+          <details>
+            <summary>Read Biography</summary>
+            <p>
+              Micah grew up in South Africa and developed a deep appreciation for wildlife,
+              nature and conservation.
+            </p>
+            <p>
+              Her long-term goal is to be a leader in conservation and use her skills
+              to achieve sustainable and positive change.
+            </p>
+          </details>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="impact">
+  <div class="container">
+    <div class="impact-grid">
+      <div class="impact-card">
+        <h3>5</h3>
+        <p>Trustees</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>100%</h3>
+        <p>Volunteer Governance</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>2017</h3>
+        <p>GECCO Founded</p>
+      </div>
+
+      <div class="impact-card">
+        <h3>40+</h3>
+        <p>Years Education Experience</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote">
+  <blockquote>
+    “Small changes today create a better future for tomorrow.”
+  </blockquote>
+  <span>GECCO</span>
+</section>
+
+<section class="cta">
+  <h2>Become Part of the Change</h2>
+  <p>
+    Help us educate, inspire and protect the future through environmental action,
+    sustainability education and community projects.
+  </p>
+  <div class="hero-buttons">
+
+    <a href="#" class="hero-btn hero-btn-primary">
+        Donate
+    </a>
+
+    <a href="#" class="hero-btn hero-btn-secondary">
+        Volunteer
+    </a>
+
+</div>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  })
+  .catch(error => console.error('Footer failed to load:', error));
+</script>
+
+</body>
+</html>
