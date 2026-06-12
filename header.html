@@ -26,7 +26,7 @@
       </div>
     </div>
 
-    <a href="ecec-forum.html">Forum</a>
+    <a href="forum.html">Forum</a>
 
     <div class="nav-item">
       <button type="button">Blog & Articles <i class="fa-solid fa-chevron-down"></i></button>
@@ -57,19 +57,31 @@
 </header>
 
 <div class="search-overlay" id="searchOverlay">
-  <div class="search-container">
+  <form
+    class="search-container"
+    id="siteSearchForm"
+    role="search"
+    action="https://www.google.com/search"
+    method="get"
+  >
     <img src="images/logo.png" alt="GECCO Logo">
 
     <input
-      type="text"
+      type="search"
       id="searchInput"
-      placeholder="Search ..."
+      name="q"
+      placeholder="Search GECCO and blog ..."
+      autocomplete="off"
     >
+
+    <button class="submit-search" type="submit" aria-label="Search">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
 
     <button class="close-search" id="closeSearch" type="button" aria-label="Close search">
       <i class="fa-solid fa-xmark"></i>
     </button>
-  </div>
+  </form>
 </div>
 
 <style>
@@ -232,6 +244,7 @@
   color:#00408f;
 }
 
+.submit-search,
 .close-search{
   width:60px;
   height:60px;
@@ -242,7 +255,12 @@
   cursor:pointer;
 }
 
-.close-search:hover{
+.submit-search{
+  font-size:24px;
+}
+
+.close-search:hover,
+.submit-search:hover{
   color:#238d19;
 }
 
@@ -347,23 +365,74 @@ document.querySelectorAll(".nav-item > button").forEach(button => {
   });
 });
 
-const searchBtn = document.getElementById("searchBtn");
-const searchOverlay = document.getElementById("searchOverlay");
-const closeSearch = document.getElementById("closeSearch");
-const searchInput = document.getElementById("searchInput");
+function initGeccoHeader(){
+  const searchBtn = document.getElementById("searchBtn");
+  const searchOverlay = document.getElementById("searchOverlay");
+  const siteSearchForm = document.getElementById("siteSearchForm");
+  const closeSearch = document.getElementById("closeSearch");
+  const searchInput = document.getElementById("searchInput");
+  const searchDomain = "gecco.org.uk";
 
-searchBtn.addEventListener("click", () => {
-  searchOverlay.classList.add("active");
-  setTimeout(() => searchInput.focus(), 100);
-});
-
-closeSearch.addEventListener("click", () => {
-  searchOverlay.classList.remove("active");
-});
-
-document.addEventListener("keydown", (e) => {
-  if(e.key === "Escape"){
-    searchOverlay.classList.remove("active");
+  if(!searchBtn || !searchOverlay || !siteSearchForm || !closeSearch || !searchInput){
+    return;
   }
-});
+
+  const runSearch = () => {
+    const query = searchInput.value.trim();
+    if(!query){
+      searchInput.focus();
+      return;
+    }
+
+    const searchQuery = `site:${searchDomain} ${query}`;
+    window.location.assign(`https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`);
+  };
+
+  if(!searchBtn.dataset.headerReady){
+    searchBtn.addEventListener("click", () => {
+      searchOverlay.classList.add("active");
+      setTimeout(() => searchInput.focus(), 100);
+    });
+    searchBtn.dataset.headerReady = "true";
+  }
+
+  if(!closeSearch.dataset.headerReady){
+    closeSearch.addEventListener("click", () => {
+      searchOverlay.classList.remove("active");
+    });
+    closeSearch.dataset.headerReady = "true";
+  }
+
+  if(!siteSearchForm.dataset.headerReady){
+    siteSearchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      runSearch();
+    });
+    siteSearchForm.dataset.headerReady = "true";
+  }
+
+  if(!searchInput.dataset.headerReady){
+    searchInput.addEventListener("keydown", (e) => {
+      if(e.key === "Enter"){
+        e.preventDefault();
+        runSearch();
+      }
+    });
+    searchInput.dataset.headerReady = "true";
+  }
+
+  if(!document.body.dataset.headerEscapeReady){
+    document.addEventListener("keydown", (e) => {
+      if(e.key === "Escape"){
+        const activeOverlay = document.getElementById("searchOverlay");
+        if(activeOverlay){
+          activeOverlay.classList.remove("active");
+        }
+      }
+    });
+    document.body.dataset.headerEscapeReady = "true";
+  }
+}
+
+initGeccoHeader();
 </script>
