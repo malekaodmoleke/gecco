@@ -28,10 +28,39 @@
 
     <a href="forum.html">Forum</a>
 
-    <div class="nav-item">
+    <div class="nav-item blog-nav">
       <button type="button">Blog & Articles <i class="fa-solid fa-chevron-down"></i></button>
-      <div class="dropdown">
-        <a href="resources.html">Resources Read & Download Articles</a>
+      <div class="dropdown blog-dropdown">
+        <div class="dropdown-flyout">
+          <a class="dropdown-link has-flyout" href="/blog/featured-articles/">
+            <span>Featured Articles</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+          <div class="submenu">
+            <a href="/blog/sustainability-checklist-for-childcare-nurseries/">Sustainability Checklist for Childcare Nurseries</a>
+            <a href="/blog/reusable-nappies-laundry-nursery-washing/">Reusable Nappies - Laundry & Nursery Washing</a>
+          </div>
+        </div>
+        <a href="/blog/2025-world-soil-day/">2025 World Soil Day</a>
+        <a href="/blog/socio-cultural-sustainability/">Socio-Cultural Sustainability</a>
+        <a href="/blog/environmental-sustainability/">Environmental Sustainability</a>
+        <a href="/blog/sustainable-food/">Sustainable Food</a>
+        <a href="/blog/sustainable-child-care/">Sustainable Child Care</a>
+        <a href="/blog/resources/">Resources</a>
+        <a href="/blog/early-years-educators/">Early Years Educators</a>
+        <a href="/blog/policies-standards/">Policies & Standards</a>
+        <div class="dropdown-flyout">
+          <a class="dropdown-link has-flyout" href="/blog/nappies-toilet-training/">
+            <span>Nappies & Toilet Training</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+          <div class="submenu">
+            <a href="/blog/2025/10/07/diy-baby-wipes/">DIY Baby Wipes</a>
+            <a href="/blog/2025/10/07/real-nappies-in-a-childcare-setting/">Real Nappies in a Childcare Setting</a>
+          </div>
+        </div>
+        <a href="/blog/economic-sustainability/">Economic Sustainability</a>
+        <a href="/blog/curriculum-practice/">Curriculum Practice</a>
       </div>
     </div>
 
@@ -177,7 +206,8 @@
   width:260px;
 }
 
-.dropdown a{
+.dropdown a,
+.dropdown-link{
   display:block;
   padding:22px 18px;
   border-bottom:1px solid #bbb;
@@ -190,12 +220,47 @@
   text-transform:uppercase;
 }
 
-.dropdown a:hover{
+.dropdown a:hover,
+.dropdown-link:hover{
   background:#f3faf1;
   color:#238d19;
 }
 
 .nav-item:hover .dropdown{
+  display:block;
+}
+
+.blog-dropdown{
+  width:360px;
+}
+
+.dropdown-flyout{
+  position:relative;
+}
+
+.dropdown .has-flyout{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.has-flyout i{
+  font-size:11px;
+}
+
+.submenu{
+  display:none;
+  position:absolute;
+  top:0;
+  left:100%;
+  width:360px;
+  background:#fff;
+  box-shadow:0 8px 25px rgba(0,0,0,.12);
+  z-index:100000;
+}
+
+.dropdown-flyout:hover .submenu{
   display:block;
 }
 
@@ -312,6 +377,7 @@
   }
 
   .dropdown,
+  .submenu,
   .dropdown-right{
     position:static;
     width:100%;
@@ -324,6 +390,15 @@
 
   .nav-item.open .dropdown{
     display:block;
+  }
+
+  .dropdown-flyout .submenu{
+    display:block;
+    padding-left:18px;
+  }
+
+  .has-flyout i{
+    display:none;
   }
 }
 
