@@ -90,7 +90,7 @@
     class="search-container"
     id="siteSearchForm"
     role="search"
-    action="https://www.google.com/search"
+    action="search.html"
     method="get"
   >
     <img src="images/logo.png" alt="GECCO Logo">
@@ -448,8 +448,6 @@ function initGeccoHeader(){
   const siteSearchForm = document.getElementById("siteSearchForm");
   const closeSearch = document.getElementById("closeSearch");
   const searchInput = document.getElementById("searchInput");
-  const searchDomain = "gecco.org.uk";
-
   if(!searchBtn || !searchOverlay || !siteSearchForm || !closeSearch || !searchInput){
     return;
   }
@@ -461,8 +459,7 @@ function initGeccoHeader(){
       return;
     }
 
-    const searchQuery = `site:${searchDomain} ${query}`;
-    window.location.assign(`https://www.google.com/search?q=${encodeURIComponent(searchQuery)}`);
+    window.location.assign(`search.html?q=${encodeURIComponent(query)}`);
   };
 
   if(!searchBtn.dataset.headerReady){
