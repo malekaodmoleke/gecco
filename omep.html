@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OMEP Sustainable Citizenship Award | GECCO</title>
+
+<style>
+:root{
+  --green:#238d19;
+  --dark-green:#0b4f12;
+  --blue:#1268c4;
+  --text:#606876;
+  --dark:#111;
+  --soft:#f4faf2;
+}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+body{
+  font-family:Arial, Helvetica, sans-serif;
+  color:var(--text);
+  background:#fff;
+  line-height:1.65;
+}
+
+.container{
+  width:min(1180px,90%);
+  margin:auto;
+}
+
+/* HERO */
+.omep-hero{
+  min-height:58vh;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 45%,rgba(255,255,255,.2) 100%),
+    url("images/hero-people.webp") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+}
+
+.hero-content{
+  max-width:780px;
+}
+
+.hero-content h1{
+  color:#000;
+  font-size:clamp(42px,5vw,72px);
+  line-height:1.1;
+  font-weight:900;
+  margin-bottom:26px;
+}
+
+.squiggle{
+  width:280px;
+  height:10px;
+  background:linear-gradient(90deg,#ffc64b,#f59b23);
+  border-radius:50%;
+  margin-bottom:22px;
+}
+
+.hero-content p{
+  font-size:21px;
+  font-weight:800;
+  color:#5d6470;
+}
+
+/* MAIN */
+.omep-main{
+  padding:80px 0;
+}
+
+.omep-layout{
+  display:grid;
+  grid-template-columns:260px 1fr;
+  gap:60px;
+  align-items:start;
+}
+
+.omep-sidebar{
+  position:sticky;
+  top:90px;
+}
+
+.omep-sidebar img{
+  width:100%;
+  max-width:250px;
+}
+
+/* CONTENT */
+.content-card{
+  background:#fff;
+}
+
+.content-card h2{
+  color:#000;
+  font-size:clamp(36px,4vw,56px);
+  line-height:1.1;
+  font-weight:900;
+  margin-bottom:18px;
+}
+
+.blue-squiggle{
+  width:250px;
+  height:10px;
+  background:#4057ff;
+  border-radius:50%;
+  margin-bottom:28px;
+}
+
+.award-image{
+  width:100%;
+  max-width:900px;
+  display:block;
+  margin:45px auto 25px;
+  border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--green);
+  color:#fff;
+  padding:14px 30px;
+  border-radius:10px;
+  text-decoration:none;
+  font-size:18px;
+  margin:0 auto 60px;
+}
+
+.btn-wrap{
+  text-align:center;
+}
+
+.intro-photo{
+  width:100%;
+  max-width:900px;
+  display:block;
+  margin:50px auto;
+  border-radius:18px;
+  box-shadow:0 20px 60px rgba(0,0,0,.12);
+}
+
+/* ACCORDION */
+.accordion{
+  margin-top:30px;
+}
+
+.acc-item{
+  border-top:4px solid #111;
+  padding:24px 0;
+}
+
+.acc-item:last-child{
+  border-bottom:4px solid #111;
+}
+
+.acc-title{
+  width:100%;
+  background:none;
+  border:none;
+  color:#000;
+  font-size:26px;
+  font-weight:900;
+  text-align:left;
+  cursor:pointer;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+
+.acc-title span{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#4057ff;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
+  flex:0 0 24px;
+}
+
+.acc-content{
+  display:none;
+  padding-top:28px;
+  max-width:780px;
+}
+
+.acc-item.active .acc-content{
+  display:block;
+}
+
+.acc-item.active .acc-title span{
+  background:var(--green);
+}
+
+.acc-content p{
+  font-size:22px;
+  line-height:1.25;
+  margin-bottom:22px;
+}
+
+.acc-content a{
+  color:var(--green);
+  font-weight:900;
+  text-decoration:none;
+  font-style:italic;
+}
+
+.acc-content img{
+  max-width:100%;
+  border-radius:14px;
+  margin:25px 0;
+}
+
+/* FEATURE SECTION */
+.feature-section{
+  background:var(--soft);
+  padding:90px 0;
+}
+
+.feature-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:36px;
+  align-items:center;
+}
+
+.feature-box{
+  background:#fff;
+  padding:42px;
+  border-radius:28px;
+  box-shadow:0 25px 70px rgba(0,0,0,.08);
+}
+
+.feature-box.green{
+  background:linear-gradient(135deg,var(--green),var(--dark-green));
+  color:#fff;
+}
+
+.feature-box h3{
+  color:var(--green);
+  font-size:34px;
+  font-weight:400;
+  margin-bottom:18px;
+}
+
+.feature-box.green h3{
+  color:#fff;
+}
+
+.feature-box p{
+  font-size:18px;
+  margin-bottom:18px;
+}
+
+.feature-box img{
+  width:100%;
+  border-radius:18px;
+  margin-top:15px;
+}
+
+/* CTA */
+.cta{
+  padding:90px 20px;
+  text-align:center;
+}
+
+.cta h2{
+  color:var(--green);
+  font-size:42px;
+  font-weight:400;
+  margin-bottom:18px;
+}
+
+.cta p{
+  font-size:20px;
+  max-width:850px;
+  margin:auto;
+}
+
+.cta a{
+  color:var(--green);
+  font-weight:800;
+  text-decoration:none;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  .omep-layout,
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+
+  .omep-sidebar{
+    position:static;
+    text-align:center;
+  }
+
+  .omep-sidebar img{
+    max-width:190px;
+  }
+
+  .acc-title{
+    font-size:22px;
+  }
+
+  .acc-content p{
+    font-size:18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="header-placeholder"></div>
+
+<section class="omep-hero">
+  <div class="container">
+    <div class="hero-content">
+      <h1>Welcome to the OMEP Sustainable Citizenship Award!</h1>
+      <div class="squiggle"></div>
+      <p>
+        GECCO provides accredited training and resources to support the
+        <em>OMEP UK Early Childhood Education for Sustainable Citizenship Award</em>
+        scheme.
+      </p>
+    </div>
+  </div>
+</section>
+
+<main class="omep-main">
+  <div class="container">
+    <div class="omep-layout">
+
+      <aside class="omep-sidebar">
+        <img src="images/omep-logo.webp" alt="OMEP United Kingdom logo">
+      </aside>
+
+      <section class="content-card">
+        <h2>Sustainable Citizenship</h2>
+        <div class="blue-squiggle"></div>
+
+        <div class="accordion">
+
+          <div class="acc-item active">
+            <button class="acc-title">Background <span>−</span></button>
+            <div class="acc-content">
+              <p>
+                Since the 2005 United Nations World Summit, it has become commonplace
+                to refer to the interdependent and mutually reinforcing pillars of
+                sustainable development as social, cultural, economic and environmental
+                sustainability.
+              </p>
+              <p>
+                The challenge for early childhood educators is to develop appropriate
+                educational systems, curriculum and pedagogic practices that provide
+                an appropriate early introduction to these areas of concern.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-title">Sustainable Citizenship Award <span>+</span></button>
+            <div class="acc-content">
+              <p>
+                A summary flyer for the OMEP UK Early Childhood Education for
+                Sustainable Citizenship Award is available for download
+                <a href="documents/Introducing-the-OMEP-UK-Early-Childhood-Education-for-Sustainable-Citizenship-Award-1.pdf" target="_blank">HERE</a>.
+              </p>
+
+              <p>
+                This work was published in 2016 and further details are available
+                <a href="http://www.omep.org.uk/the-environmental-rating-scale-for-sustainable-development-in-early-childhood-ers-sdec/" target="_blank">HERE</a>.
+              </p>
+
+              <p>
+                The criteria applied audit and accreditation at Bronze level are summarised
+                <a href="https://www.omep.org.uk/areas-of-practice-addressed-by-the-omep-uk-esc-bronze-level-audit/" target="_blank">HERE</a>.
+              </p>
+
+              <img src="images/early-years.webp" alt="Early Childhood Sustainable Citizenship Award Passport">
+
+              <p>
+                Each child is able to collect award stickers for entry into their passport,
+                showing ESC achievements at Bronze, Silver and Gold level.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-title">A Pedagogy for Sustainable Citizenship <span>+</span></button>
+            <div class="acc-content">
+              <p>
+                Early childhood education is child centred and personalised. Popular
+                early learning models can support preschools in implementing meaningful,
+                ecological and practical learning.
+              </p>
+
+              <p>
+                <a href="https://www.un.org/sustainabledevelopment/sustainable-development-goals/" target="_blank">
+                  A Path made in the Walking
+                </a>
+                provides a useful introduction to such practice in the context of
+                Forest School Education.
+              </p>
+
+              <p>
+                GECCO welcomes collaboration with training providers and academics.
+                Contact us at
+                <a href="mailto:gecco@gecco.org.uk">gecco@gecco.org.uk</a>.
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-title">A Sustainable Citizenship Curriculum <span>+</span></button>
+            <div class="acc-content">
+              <p>
+                The importance of education in supporting the transition to a more
+                sustainable society has been emphasised by the United Nations Sustainable
+                Development Goals.
+              </p>
+
+              <p>
+                The
+                <a href="https://www.unesco.org/en/sustainable-development/education/greening-future" target="_blank">
+                  Greening Education Partnership
+                </a>
+                and
+                <a href="https://www.unesco.org/en/education-sustainable-development/greening-future/curriculum" target="_blank">
+                  Greening Curriculum Guidance
+                </a>
+                support whole-school sustainability approaches.
+              </p>
+
+              <p>
+                For further information please contact:
+                <a href="mailto:OMEP@gecco.org.uk">OMEP@gecco.org.uk</a>
+              </p>
+            </div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-title">OMEP &amp; GECCO Partnership <span>+</span></button>
+            <div class="acc-content">
+              <p>
+                OMEP is an international non-governmental and non-profit organisation
+                with Consultative Status at the United Nations and UNESCO.
+              </p>
+
+              <p>
+                Tops Day Nurseries and Aspire Training team hosted the OMEP Conference
+                on 29 January 2023.
+              </p>
+
+              <img src="images/omep-conference.webp" alt="OMEP Conference">
+
+              <p>
+                The regular Tops e-providers were not able to support the move at that
+                point, but Thinkific and GoAudit were used to pilot OMEP awards.
+              </p>
+
+              <img src="images/omep-awards.webp" alt="OMEP Awards pilot session">
+            </div>
+          </div>
+
+        </div>
+
+        <img class="award-image" src="images/Introducing-the-OMEP-UK-Early-Childhood-Education-for-Sustainable-Citizenship-Award-1.webp" alt="Introducing the OMEP UK Early Childhood Education for Sustainable Citizenship Award">
+
+        <div class="btn-wrap">
+          <a class="download-btn" href="documents/Introducing-the-OMEP-UK-Early-Childhood-Education-for-Sustainable-Citizenship-Award-1.pdf" target="_blank">
+            Download Flyer
+          </a>
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<section class="feature-section">
+  <div class="container">
+    <div class="feature-grid">
+
+      <div class="feature-box">
+        <h3>Training, Audits and Accreditation</h3>
+        <p>
+          GECCO supports settings with resources, training and practical guidance
+          for Bronze, Silver and Gold OMEP UK ESC Award levels.
+        </p>
+        <p>
+          The award encourages children, parents, practitioners and communities
+          to work together towards sustainable citizenship.
+        </p>
+      </div>
+
+      <div class="feature-box green">
+        <h3>OMEP Conference</h3>
+        <p>
+          The conference brought together early years practitioners and sustainability
+          leaders to explore how education can support environmental responsibility.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>Interested in the OMEP Award?</h2>
+  <p>
+    Contact us at <a href="mailto:OMEP@gecco.org.uk">OMEP@gecco.org.uk</a>
+    to learn more about support, training and accreditation.
+  </p>
+</section>
+
+<div id="footer-placeholder"></div>
+
+<script>
+fetch('./header.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('header-placeholder').innerHTML = data;
+  });
+
+fetch('./footer.html')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('footer-placeholder').innerHTML = data;
+  });
+
+document.querySelectorAll(".acc-title").forEach(button => {
+  button.addEventListener("click", () => {
+    const item = button.parentElement;
+    const icon = button.querySelector("span");
+
+    item.classList.toggle("active");
+    icon.textContent = item.classList.contains("active") ? "−" : "+";
+  });
+});
+</script>
+
+</body>
+</html>
