@@ -1,15 +1,13 @@
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
 <header class="site-header">
 
   <div class="logo-area">
     <a href="gecco.html" class="logo-link">
-      <img src="images/logo.png" alt="GECCO Logo">
+      <img src="images/logo.png" width="140" height="141" alt="GECCO Logo">
     </a>
   </div>
 
   <button class="mobile-toggle" onclick="toggleMenu()" aria-label="Open menu">
-    <i class="fa-solid fa-bars"></i>
+    <span aria-hidden="true">&#9776;</span>
   </button>
 
   <nav class="main-nav" id="mainNav">
@@ -17,7 +15,7 @@
     <a href="gecco.html">Home</a>
 
     <div class="nav-item">
-      <button type="button">About <i class="fa-solid fa-chevron-down"></i></button>
+      <button type="button">About <span class="nav-icon" aria-hidden="true">&#9662;</span></button>
       <div class="dropdown">
         <a href="why-gecco.html">Why GECCO?</a>
         <a href="meet-the-team.html">Meet The Team</a>
@@ -29,12 +27,12 @@
     <a href="forum.html">Forum</a>
 
     <div class="nav-item blog-nav">
-      <button type="button">Blog & Articles <i class="fa-solid fa-chevron-down"></i></button>
+      <button type="button">Blog & Articles <span class="nav-icon" aria-hidden="true">&#9662;</span></button>
       <div class="dropdown blog-dropdown">
         <div class="dropdown-flyout">
           <a class="dropdown-link has-flyout" href="/blog/featured-articles/">
             <span>Featured Articles</span>
-            <i class="fa-solid fa-chevron-right"></i>
+            <span class="flyout-icon" aria-hidden="true">&#8250;</span>
           </a>
           <div class="submenu">
             <a href="/blog/sustainability-checklist-for-childcare-nurseries/">Sustainability Checklist for Childcare Nurseries</a>
@@ -52,7 +50,7 @@
         <div class="dropdown-flyout">
           <a class="dropdown-link has-flyout" href="/blog/nappies-toilet-training/">
             <span>Nappies & Toilet Training</span>
-            <i class="fa-solid fa-chevron-right"></i>
+            <span class="flyout-icon" aria-hidden="true">&#8250;</span>
           </a>
           <div class="submenu">
             <a href="/blog/2025/10/07/diy-baby-wipes/">DIY Baby Wipes</a>
@@ -68,7 +66,7 @@
     <a href="/blog/omep/">OMEP</a>
 
     <div class="nav-item">
-      <button type="button">Support Us <i class="fa-solid fa-chevron-down"></i></button>
+      <button type="button">Support Us <span class="nav-icon" aria-hidden="true">&#9662;</span></button>
       <div class="dropdown dropdown-right">
         <a href="corporate-partnerships.html">Corporate Partnerships</a>
         <a href="commission-us.html">Commission Us</a>
@@ -78,7 +76,7 @@
     </div>
 
     <button class="search-btn" id="searchBtn" type="button" aria-label="Open search">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="search-glyph" aria-hidden="true"></span>
     </button>
 
   </nav>
@@ -93,7 +91,7 @@
     action="search.html"
     method="get"
   >
-    <img src="images/logo.png" alt="GECCO Logo">
+    <img src="images/logo.png" width="140" height="141" alt="GECCO Logo">
 
     <input
       type="search"
@@ -104,11 +102,11 @@
     >
 
     <button class="submit-search" type="submit" aria-label="Search">
-      <i class="fa-solid fa-magnifying-glass"></i>
+      <span class="search-glyph" aria-hidden="true"></span>
     </button>
 
     <button class="close-search" id="closeSearch" type="button" aria-label="Close search">
-      <i class="fa-solid fa-xmark"></i>
+      <span aria-hidden="true">&times;</span>
     </button>
   </form>
 </div>
@@ -178,7 +176,7 @@
   position:relative;
 }
 
-.nav-item button i{
+.nav-icon{
   margin-left:8px;
   font-size:11px;
 }
@@ -187,6 +185,27 @@
   width:76px;
   border-right:1px solid #ddd;
   font-size:22px;
+}
+
+.search-glyph{
+  width:18px;
+  height:18px;
+  border:3px solid currentColor;
+  border-radius:50%;
+  display:inline-block;
+  position:relative;
+}
+
+.search-glyph::after{
+  content:"";
+  width:9px;
+  height:3px;
+  background:currentColor;
+  border-radius:999px;
+  position:absolute;
+  right:-8px;
+  bottom:-5px;
+  transform:rotate(45deg);
 }
 
 .dropdown{
@@ -245,7 +264,7 @@
   gap:16px;
 }
 
-.has-flyout i{
+.flyout-icon{
   font-size:11px;
 }
 
@@ -397,7 +416,7 @@
     padding-left:18px;
   }
 
-  .has-flyout i{
+  .flyout-icon{
     display:none;
   }
 }
