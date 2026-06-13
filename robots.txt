@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /blog/wp-admin/
+
+Sitemap: https://gecco.org.uk/blog/wp-sitemap.xml
