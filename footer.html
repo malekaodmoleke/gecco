@@ -44,6 +44,12 @@ body{
     transform:translateY(-5px);
 }
 
+.social-section svg{
+    width:24px;
+    height:24px;
+    fill:currentColor;
+}
+
 /* Brand Colors */
 .facebook{
     background:#1877f2;
@@ -126,14 +132,14 @@ body{
     background:rgba(255,255,255,.12);
 }
 
-	.donation-card h4{
-	    font-size:22px;
-	    margin-bottom:15px;
-	}
+.donation-card h4{
+    font-size:22px;
+    margin-bottom:15px;
+}
 
-    .donation-icon{
-        margin-right:8px;
-    }
+.donation-icon{
+    margin-right:8px;
+}
 
 .donation-card p{
     color:#d7e8d7;
@@ -152,7 +158,64 @@ body{
     text-decoration:underline;
 }
 
+/* World Forum Section */
+
+.world-forum{
+    margin-top:45px;
+    padding:30px;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:15px;
+    text-align:center;
+}
+
+.world-forum h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.world-forum p{
+    color:#d7e8d7;
+    line-height:1.8;
+    margin-bottom:18px;
+}
+
+.world-forum ul{
+    list-style:none;
+    padding:0;
+    margin:20px auto;
+    max-width:500px;
+}
+
+.world-forum li{
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.world-forum a{
+    color:#fff;
+    font-weight:bold;
+    text-decoration:none;
+}
+
+.world-forum a:hover{
+    text-decoration:underline;
+}
+
+.qr-code{
+    margin-top:25px;
+}
+
+.qr-code img{
+    width:180px;
+    max-width:100%;
+    background:#fff;
+    padding:8px;
+    border-radius:10px;
+}
+
 /* Bottom */
+
 .footer-bottom{
     border-top:1px solid rgba(255,255,255,.15);
     text-align:center;
@@ -175,41 +238,59 @@ body{
         font-size:24px;
     }
 
+    .world-forum h3{
+        font-size:22px;
+    }
+
 }
 
 </style>
+
 <footer class="site-footer">
 
     <!-- Social Media -->
+
     <div class="social-section">
 
         <a href="https://www.facebook.com/GECCOcharity/"
-	           target="_blank"
-               aria-label="Facebook"
-	           class="facebook">
-	            <span aria-hidden="true">f</span>
-	        </a>
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Facebook"
+           class="facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M13.5 22v-9h3l.45-3.5H13.5V7.27c0-1.01.28-1.7 1.74-1.7H17.1V2.44A25 25 0 0 0 14.39 2C11.7 2 9.86 3.64 9.86 6.65V9.5H6.82V13h3.04v9h3.64Z"/>
+            </svg>
+        </a>
 
         <a href="https://www.instagram.com/geccocharity/"
-	           target="_blank"
-               aria-label="Instagram IG"
-	           class="instagram">
-	            <span aria-hidden="true">IG</span>
-	        </a>
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Instagram"
+           class="instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path fill-rule="evenodd" d="M7.75 2h8.5A5.76 5.76 0 0 1 22 7.75v8.5A5.76 5.76 0 0 1 16.25 22h-8.5A5.76 5.76 0 0 1 2 16.25v-8.5A5.76 5.76 0 0 1 7.75 2Zm0 2A3.75 3.75 0 0 0 4 7.75v8.5A3.75 3.75 0 0 0 7.75 20h8.5A3.75 3.75 0 0 0 20 16.25v-8.5A3.75 3.75 0 0 0 16.25 4h-8.5ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm6.5-2.25a1.25 1.25 0 1 1-2.5 0 1.25 1.25 0 0 1 2.5 0Z" clip-rule="evenodd"/>
+            </svg>
+        </a>
 
         <a href="https://www.linkedin.com/in/cheryl-hadland-7b0ba324/"
-	           target="_blank"
-               aria-label="LinkedIn"
-	           class="linkedin">
-	            <span aria-hidden="true">in</span>
-	        </a>
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="LinkedIn"
+           class="linkedin">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M6.5 8.25H3V21h3.5V8.25ZM4.75 3A2.04 2.04 0 1 0 4.75 7a2.04 2.04 0 0 0 0-4ZM21 13.7c0-3.84-2.05-5.63-4.79-5.63a4.14 4.14 0 0 0-3.75 2.06h-.05V8.25H9.06V21h3.5v-6.31c0-1.66.31-3.27 2.37-3.27 2.03 0 2.06 1.9 2.06 3.38V21H21v-7.3Z"/>
+            </svg>
+        </a>
 
         <a href="https://www.youtube.com/channel/UCHtKeyQc7i8Kq1A4BMEYYtA"
-	           target="_blank"
-               aria-label="YouTube YT"
-	           class="youtube">
-	            <span aria-hidden="true">YT</span>
-	        </a>
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="YouTube"
+           class="youtube">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.54 12 3.54 12 3.54s-7.5 0-9.38.51A3.02 3.02 0 0 0 .5 6.19 31.5 31.5 0 0 0 0 12a31.5 31.5 0 0 0 .5 5.81 3.02 3.02 0 0 0 2.12 2.14c1.88.51 9.38.51 9.38.51s7.5 0 9.38-.51a3.02 3.02 0 0 0 2.12-2.14A31.5 31.5 0 0 0 24 12a31.5 31.5 0 0 0-.5-5.81ZM9.55 15.57V8.43L15.82 12l-6.27 3.57Z"/>
+            </svg>
+        </a>
 
     </div>
 
@@ -247,13 +328,12 @@ body{
             <div class="donation-card">
 
                 <h4>
-	                    <span class="donation-icon" aria-hidden="true">♥</span>
-	                    Give As You Live
+                    <span class="donation-icon">♥</span>
+                    Give As You Live
                 </h4>
 
                 <p>
-                    Support GECCO while shopping online at no
-                    extra cost to you.
+                    Support GECCO while shopping online at no extra cost to you.
                 </p>
 
                 <a href="https://www.giveasyoulive.com/charity/gecco"
@@ -266,15 +346,34 @@ body{
             <div class="donation-card">
 
                 <h4>
-	                    <span class="donation-icon" aria-hidden="true">£</span>
-	                    Direct Bank Donation
+                    <span class="donation-icon">£</span>
+                    Direct Bank Donation
                 </h4>
 
                 <p>
-                    Donate directly through our charity banking facilities
-                    using our mobile donation application.
+                    Donate directly through our charity banking facilities using
+                    our mobile donation application.
                 </p>
 
+            </div>
+
+        </div>
+
+        <div class="world-forum">
+            <p>
+                Browse our shared sustainability resources or contribute your own.
+            </p>
+
+            <p>
+                <a href="https://drive.google.com/drive/folders/1-M86ZIh-T3qlY2iGDDFVjrPd3fvoUNmT"
+                   target="_blank">
+                    Open the GECCO Resource Library →
+                </a>
+            </p>
+
+            <div class="qr-code">
+                <img src="https://gecco.org.uk/blog/wp-content/uploads/2026/06/qr-scaled.png"
+                     alt="GECCO QR Code">
             </div>
 
         </div>
