@@ -533,7 +533,19 @@ body{
 fetch('./header.html')
   .then(response => response.text())
   .then(data => {
-    document.getElementById('header-placeholder').innerHTML = data;
+    const placeholder = document.getElementById('header-placeholder');
+    placeholder.innerHTML = data;
+
+    placeholder.querySelectorAll('script').forEach(oldScript => {
+      const script = document.createElement('script');
+      if (oldScript.src) {
+        script.src = oldScript.src;
+      } else {
+        script.textContent = oldScript.textContent;
+      }
+      document.head.appendChild(script);
+      oldScript.remove();
+    });
   });
 
 fetch('./footer.html')

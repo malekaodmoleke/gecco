@@ -165,6 +165,11 @@
   color:#176c10;
 }
 
+.main-nav > a.active,
+.nav-item.active > button{
+  color:#ff7f50;
+}
+
 .nav-item{
   position:relative;
 }
@@ -520,5 +525,28 @@ function initGeccoHeader(){
   }
 }
 
+function setActiveMenuItem(){
+  const normalizePath = path => {
+    const normalizedPath = path.replace(/\/$/, "").replace(/\/index\.html$/, "");
+    return normalizedPath || "/";
+  };
+  const currentPath = normalizePath(window.location.pathname);
+
+  document.querySelectorAll("#mainNav a[href]").forEach(link => {
+    const linkPath = normalizePath(new URL(link.href, window.location.href).pathname);
+
+    if(linkPath === currentPath){
+      link.classList.add("active");
+      link.setAttribute("aria-current", "page");
+
+      const parentNavItem = link.closest(".nav-item");
+      if(parentNavItem){
+        parentNavItem.classList.add("active");
+      }
+    }
+  });
+}
+
 initGeccoHeader();
+setActiveMenuItem();
 </script>
